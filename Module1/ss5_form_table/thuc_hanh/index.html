@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form & Table</title>
+    <style>
+        .formStyle {
+            font-family: "Lucida Grande","Lucida Sans Unicode", Tahoma, sans-serif;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" class="formStyle">
+        <h4>Order Form</h4>
+        <div><label for="listBuy">What would you like to buy?</label></div>
+        <select name="listBuy" id="">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+
+        <div><label for="order">How many would you like to order</label></div>
+        <input type="radio" name="order" >1 - $10 <br>
+        <input type="radio" name="order">2 - $20 <br>
+        <input type="radio" name="order">3 - $25 <br>
+
+        <div>
+            <p>Name *</p>
+            <input type="text" placeholder="FirstName">
+            <input type="text" placeholder="LastName">
+        </div>
+
+        <div>
+            <p>Email</p>
+            <input type="email" placeholder="nguyenvana@gmail.com">
+        </div>
+
+        <div>
+            <p>Phone Number</p>
+            <input type="number">-<input type="number">-<input type="number">
+        </div>
+
+        <div style="margin-top: 20px;">
+            <input type="submit" value="Submit" id="">
+        </div>
+    </form>
+
+    <form action="https://www.google.com.vn/search" style="margin-top: 20px;"> 
+        <input type="text" name="q"/>
+        <input type="submit" value="Tìm kiếm"/>
+   </form>
+
+   <table style="margin-top: 20px;">
+    <tr>
+        <th>Company</th>
+        <th>Contact</th>
+        <th>Country</th>
+    </tr>
+    <tr>
+        <td>Alfreds Futterkiste</td>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+      </tr>
+      <tr>
+        <td>Ernst Handel</td>
+        <td>Roland Mendel</td>
+        <td>Austria</td>
+      </tr>
+      <tr>
+        <td>Island Trading</td>
+        <td>Helen Bennett</td>
+        <td>UK</td>
+      </tr>
+   </table>
+
+   <div style="margin-top: 20px;">
+        <p>Thời khoá biểu</p>
+        <table style="  border-collapse: collapse;
+        margin-top: 15px;">
+            <tr style="background-color: red; color: whitesmoke;">
+                <th rowspan="2">Thứ</th>
+                <th colspan="2">Hoạt động</th>
+            </tr>
+            <tr style="background-color: red; color: whitesmoke;">
+                <td>Sáng</td>
+                <td>Chiều</td>
+            </tr>
+            <tr>
+                <td>Thứ 2</td>
+                <td>Thể dục</td>
+                <td>HD trò chơi mới</td>
+            </tr>
+            <tr>
+                <td>Thứ 3</td>
+                <td>Nhận biết tập nói</td>
+                <td>Rèn nề nếp,kỹ năng sống</td>
+            </tr>
+            <tr>
+                <td>Thứ 4</td>
+                <td>Âm Nhạc </td>
+                <td>Vui chơi</td>
+            </tr>
+            <tr>
+                <td>Thứ 5</td>
+                <td>Văn Học</td>
+                <td>Nhận Biết các giá trị sống</td>
+            </tr>
+        </table>
+   </div>
+   
+</body>
+</html>
