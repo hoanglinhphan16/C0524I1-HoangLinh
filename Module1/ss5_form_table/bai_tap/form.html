@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        #hobby {
+            width: 30%;
+            justify-content: flex-start;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/" method="post" style="width: 50%; background-color: rgb(34, 245, 245); padding: 10px 15px 15px 15px;">
+        <h2 style="margin-top: 0;text-align: center; background-color: orangered; color: white; font-weight: bold; text-transform: uppercase;" >Sở thích của bạn</h2>
+        <div style="margin-top: 10px;">
+            <label for="name" style="margin-right: 7px;">Họ và tên</label>
+            <input type="text" name="name">
+        </div>
+        <div style="margin-top: 10px;">
+            <label for="email" style="margin-right: 31px;">Email</label>
+            <input type="email" name="email">
+        </div>
+
+        <div style="margin-top: 10px; display: flex;">
+            <label for="hobbies">Sở thích</label>
+            <div style="display: flex; flex-wrap: wrap;">
+                <div id="hobby"><input type="checkbox" name="hobbies" > Thể thao</div>
+                <div id="hobby"><input type="checkbox" name="hobbies" > Lướt web</div>
+                <div id="hobby"><input type="checkbox" name="hobbies" > Du lịch</div>
+                <div id="hobby"><input type="checkbox" name="hobbies" > Âm nhạc</div>
+                <div id="hobby"><input type="checkbox" name="hobbies" > Chơi game</div>
+                <div id="hobby"><input type="checkbox" name="hobbies" > Đọc sách</div>
+                <div id="hobby"><input type="checkbox" name="hobbies" >Điện ảnh</div>
+            </div>
+            
+        </div>
+
+        <div style="margin-top: 20px;">
+            <input type="submit" value="Gửi thông tin">
+            <input type="reset" value="Nhập lại">
+        </div>
+    </form>
+
+    <form action="/" method="post" class="signUpForm">
+        <h3 class="title">ĐĂNG KÝ HỌC VIÊN</h3>
+        <div class="flex">
+            <label for="">Họ và tên:</label>
+            <div>
+                <input type="text">
+            </div>
+        </div>
+        <div class="flex">
+            <label for="">Ngày sinh:</label>
+            <div>
+                <input type="text">
+            </div>
+        </div>
+        <div class="flex">
+            <label for="">Giới tính:</label>
+            <div>
+                <input type="radio">Nam
+                <input type="radio">Nữ
+            </div>
+        </div>
+        <div class="flex">
+            <label for="">Địa chỉ:</label>
+            <div>
+                <input style="height: 40px;" type="text" name="" id="">
+            </div>
+        </div>
+        <div class="flex">
+            <label for="">Lớp:</label>
+            <div>
+                <select name="" id="">
+                    <option value="" disabled selected>Chọn lớp</option>
+                    <option value="">C0524I1</option>
+                    <option value="">C0344I5</option>
+                </select>
+            </div>
+        </div>
+        <div class="flex">
+            <label for="">Email:</label>
+            <div>
+                <input type="email">
+            </div>
+        </div>
+        <div class="flex">
+            <label for="">Điện thoại:</label>
+            <div>
+                <input type="number">
+            </div>
+        </div>
+
+        <div style="margin-top: 25px; margin-left: 20%;">
+            <input type="submit" name="" id="" value="Đăng ký">
+            <input type="reset" name="" id="" value="Nhập lại">
+        </div>
+    </form>
+</body>
+</html>

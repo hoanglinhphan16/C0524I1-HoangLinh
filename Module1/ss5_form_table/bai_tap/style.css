@@ -1,0 +1,20 @@
+.signUpForm {
+    margin-top: 20px;
+    background-color: rgb(248, 246, 121);
+    width: 50%;
+    padding: 2px 15px 15px 15px
+}
+
+.title {
+    background-color: aquamarine;
+    color: blue;
+}
+
+.flex {
+    display: flex;
+    margin-top: 5px;
+}
+
+.signUpForm label {
+    width: 20%;
+}
