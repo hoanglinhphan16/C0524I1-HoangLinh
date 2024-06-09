@@ -18,3 +18,160 @@
 .signUpForm label {
     width: 20%;
 }
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.flex input, span {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.timelineTable {
+    text-align: center;
+}
+
+.timelineTable table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.timelineTable th {
+    background-color: yellow;
+}
+
+.timelineTable td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.bigContentTable {
+    width: 100%;
+    text-align: center;
+}
+
+.infor {
+    display: flex;
+    justify-content:space-around ;
+}
+
+.bigTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.bigTable td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.day :nth-child(4) {
+    background-color: yellow;
+}
+
+.day :nth-child(5) {
+    background-color: yellow;
+}
+.day :nth-child(6) {
+    background-color: yellow;
+}
+
+.chess td {
+    width: 100px;
+    height: 100px;
+}
+
+.chess th {
+    border: none;
+}
+
+.whiteFirst :nth-child(1) {
+    background-color: transparent!important;
+}
+
+.whiteFirst :nth-child(even) {
+    background-color: white;
+}
+
+.whiteFirst :nth-child(odd) {
+    background-color: black;
+}
+
+.blackFirst :nth-child(1) {
+    background-color: transparent!important;
+}
+
+.blackFirst :nth-child(even) {
+    background-color: black;
+}
+
+.blackFirst :nth-child(odd) {
+    background-color: white;
+}
+
+.whiteFirst, .blackFirst :nth-child(1) {
+    text-align: center;
+    font-weight: bold;
+}
+
+.calendar td {
+    text-align: center;
+}
+
+.calendar th {
+    border: none;
+}
+
+.vietnamesehDay {
+    background-color: orange;
+    color: white;
+}
+
+.vietnamesehDay :nth-child(1) {
+    background-color: red;
+}
+
+.vietnamesehDay :nth-child(7) {
+    background-color: blue;
+}
+
+.englishDay :nth-child(1) {
+    color: red;
+}
+
+.englishDay :nth-child(7) {
+    color: blue;
+}
+
+.calendarDay td {
+    border-spacing: 0px;
+    border: 1px solid #ddd;
+}
+
+.calendarDay :nth-child(1) {
+    color: red;
+}
+
+.calendarDay :nth-child(7) {
+    color: blue;
+}
+
+sub {
+    color: black!important;
+}
+
+
+
+
+
+
+
+
+
