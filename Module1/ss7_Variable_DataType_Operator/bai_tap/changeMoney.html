@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display: flex;justify-content: space-evenly;">
+        <div>
+            <p>Amount</p>
+            <input type="number" id="amount" placeholder="100">
+        </div>
+        
+        <div>
+            <p>From Currency</p>
+            <select name="" id="moneyFrom">
+                <option value="">USD</option>
+                <option value="">VND</option>
+            </select>
+        </div>
+
+        <div>
+            <p>To Currency</p>
+            <select name="" id="moneyTo">
+                <option value="">VND</option>
+                <option value="">USD</option>
+            </select>
+        </div>
+
+        <button onclick="changeMoney()">Submit</button>
+    </div>
+    <p id="result" style="text-align: center;"></p>
+    <script src="app.js"></script>
+</body>
+</html>

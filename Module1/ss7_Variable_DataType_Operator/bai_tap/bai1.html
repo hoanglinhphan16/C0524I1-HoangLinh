@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="physic">Điểm Lý</label>
+        <input type="number" name="physic" id="physicGrade">
+        <label for="chemistry">Điểm Hoá</label>
+        <input type="number" name="chemistry" id="chemistryGrade">
+        <label for="biology">Điểm Sinh</label>
+        <input type="number" name="biology" id="biologyGrade">
+
+        <button onclick="average()">Average</button>
+
+        <p id="result"></p>
+    </div>
+
+    <div>
+        <input type="number" id="celsius" placeholder="Độ C">
+        <button onclick="changeToF()">Change to F</button>
+
+        <p id="result1"></p>
+    </div>
+
+    <div>
+        <label for="">Nhập vào bán kính</label>
+        <input type="number" name="" id="radius">
+        <button onclick="perimeter()">Tính chu vi</button>
+        <button onclick="area()">Tính diện tích</button>
+        <p id="result2"></p>
+    </div>
+
+    <script src="app.js"></script>
+    
+</body>
+</html>
