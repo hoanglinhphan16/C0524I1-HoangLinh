@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            width: 100%;
+        }
+       
+    </style>
+</head>
+<body>
+    <input type="text" id="valueInput"><br><br>
+<div>
+    <table>
+        <tr>
+            <td><button type="button" value ="1" onclick="inputValue(this.value)"> 1 </button></td>
+            <td><button type="button" value ="2" onclick="inputValue(this.value)"> 2 </button></td>
+            <td><button type="button" value ="3" onclick="inputValue(this.value)"> 3 </button></td>
+            <td><button type="button" value ="+" onclick="inputValue(this.value)"> + </button></td>
+        </tr>
+      
+        <tr>
+            <td><button type="button" value ="4" onclick="inputValue(this.value)"> 4 </button></td>
+            <td><button type="button" value ="5" onclick="inputValue(this.value)"> 5 </button></td>
+            <td><button type="button" value ="6" onclick="inputValue(this.value)"> 6 </button></td>
+            <td><button type="button" value ="-" onclick="inputValue(this.value)"> - </button></td>
+        </tr>
+        <tr>
+            <td><button type="button" value ="7" onclick="inputValue(this.value)"> 7 </button></td>
+            <td><button type="button" value ="8" onclick="inputValue(this.value)"> 8 </button></td>
+            <td><button type="button" value ="9" onclick="inputValue(this.value)"> 9</button></td>
+            <td><button type="button" value ="*" onclick="inputValue(this.value)"> * </button></td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="deleteValue();"> AC </button></td>
+            <td><button type="button" onclick="inputValue(this.value)"> 0 </button></td>
+            <td><button onclick="result();"> = </button></td>
+            <td><button type="button" value ="/" onclick="inputValue(this.value)"> / </button></td>
+        </tr>
+    </table>
+    
+</div>
+<script src="mayTinhNangCao.js">
+</script>
+</body>
+</html>
