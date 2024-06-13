@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let valueA = parseInt(prompt('Nhap vao do dai canh a'))
+        let valueB = parseInt(prompt('Nhap vao do dai canh b'))
+        let valueC = parseInt(prompt('Nhap vao do dai canh c'))
+
+        if (valueA && valueA > 0 && valueB && valueB > 0 && valueC && valueC > 0) {
+            if (valueA + valueB > valueC && valueA + valueC > valueB && valueB + valueC > valueA) {
+                alert("Các cạnh vừa nhập vào có thể tạo thành 1 tam giác")
+            } else {
+                alert("Các cạnh vừa nhập vào không thể tạo thành 1 tam giác")
+            }
+        } else {
+            alert("Các cạnh vừa nhập vào không thể tạo thành 1 tam giác")
+        }
+    </script>
+</body>
+
+</html>

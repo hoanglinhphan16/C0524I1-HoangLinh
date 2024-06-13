@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let valueA = parseInt(prompt('Nhap vao a'))
+        let valueB = parseInt(prompt('Nhap vao b'))
+        let valueC = parseInt(prompt('Nhap vao c'))
+
+        if (valueA && valueB && valueC) {
+            if (valueA == 0) {
+                alert("pt co nghiem la = " + (-valueC / valueB))
+            } else {
+                let delta = valueB ** 2 - 4 * valueA * valueC
+                if (delta > 0) {
+                    let x1 = (-valueB + Math.sqrt(delta)) / (2 * valueA)
+                    let x2 = (-valueB - Math.sqrt(delta)) / (2 * valueA)
+
+                    alert("pt có 2 nghiem la x1 = " + x1 + "; x2 = " + x2)
+                } else if (delta == 0) {
+                    let x = -valueB / (2 * valueA)
+                    alert("pt co 1 nghiem la " + x)
+                } else alert("pt vo nghiem")
+            }
+        } else alert("Bạn nhập thiếu giá trị rồi!!!")
+
+
+
+
+    </script>
+</body>
+
+</html>

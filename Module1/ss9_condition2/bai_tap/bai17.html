@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let valueA = parseInt(prompt("Nhap vao so kWh da su dung"), 0)
+
+        if (valueA > 401) {
+            let money = valueA * 3151
+            alert("Tien dien la " + money)
+
+        } else if (valueA > 301) {
+            let money = valueA * 3050
+            alert("Tien dien la " + money)
+        } else if (valueA > 201) {
+            let money = valueA * 2729
+            alert("Tien dien la " + money)
+        }
+        else {
+            let money = valueA * 2167
+            alert("Tien dien la " + money)
+        }
+    </script>
+</body>
+
+</html>
