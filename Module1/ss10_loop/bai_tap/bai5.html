@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        fibList = (value) => {
+            let f0 = 0, f1 = 1, fn = 1;
+            document.writeln(f0 + '<br>' + f1 + '<br>' + fn + '<br>');
+            let sum = f1 + fn;
+
+            for (i = 0; i < value; i++) {
+                f0 = f1;
+                f1 = fn;
+                fn = f0 + f1;
+                sum = sum + fn;
+                document.writeln(fn + '<br>');
+            }
+            document.writeln("Tổng các số trong dãy fib vừa nhập là " + sum)
+        }
+
+        let inputValue = parseInt(prompt('Nhap vao so luong so fib muon in ra'))
+
+        if (inputValue) {
+            let value = inputValue - 3;
+            fibList(value);
+        } else alert("Nhap lai di cuuuu")
+    </script>
+</body>
+
+</html>
