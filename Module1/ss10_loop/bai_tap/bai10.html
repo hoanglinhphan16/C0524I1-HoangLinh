@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let width = parseInt(prompt("Nhap vao chieu dai HCN"))
+        let height = parseInt(prompt("Nhap vao chieu rong HCN"))
+
+        for (i = 1; i <= height; i++) {
+            for (j = 1; j <= width; j++) {
+                if (i == 1 || i == height) {
+                    document.write("*")
+                } else if (j == 1 || j == width) {
+                    document.write("*")
+                } else document.write("$")
+            }
+            document.write("<br>")
+        }
+    </script>
+</body>
+
+</html>
