@@ -9,23 +9,36 @@
 
 <body>
     <script>
-        let arrLength;
+        let string = "    Hom nay la thu tu";
+        let count = 0;
+        let check = false;
 
-        do {
-            arrLength = +prompt("Nhap vao do dai 1 mang")
-        } while (!arrLength);
-
-        let arr = [], count = 0
-
-        for (i = 0; i < arrLength; i++) {
-            arr[i] = prompt("Nhap vao 1 phan tu")
-        }
-
-        for (j = 0; j < arrLength; j++) {
-            if (!parseInt(arr[j])) {
-                count += 1;
+        for (i = 0; i < string.length; i++) {
+            if (string[i] !== " " && !check) {
+                count++;
+                check = true;
+            } else if (string[i] == " ") {
+                check = false
             }
         }
+
+        console.log(`So tu trong chuoi la ${count}`);
+
+        // do {
+        //     arrLength = +prompt("Nhap vao do dai 1 mang")
+        // } while (!arrLength);
+
+        // let arr = [], count = 0
+
+        // for (i = 0; i < arrLength; i++) {
+        //     arr[i] = prompt("Nhap vao 1 phan tu")
+        // }
+
+        // for (j = 0; j < arrLength; j++) {
+        //     if (!parseInt(arr[j])) {
+        //         count += 1;
+        //     }
+        // }
 
         console.log(count);
     </script>
