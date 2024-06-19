@@ -9,7 +9,10 @@
 
 <body>
     <script>
-        let value = parseInt(prompt("Nhap vao nhiet do bat ki"));
+        let value;
+        do {
+            value = parseInt(prompt("Nhap vao nhiet do bat ki"));
+        } while (value > 20 && value < 100)
 
         if (value) {
             if (value > 100) {

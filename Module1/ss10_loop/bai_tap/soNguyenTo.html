@@ -10,14 +10,12 @@
 <body>
 
     <script>
-        isPrime = (value) => {
+        const isPrime = (value) => {
             let check = true;
-            if (value < 2) {
+            if (value < 2 || value % 2 == 0) {
                 check = false;
             } else if (value == 2) {
                 check = true
-            } else if (value % 2 == 0) {
-                check = false
             } else {
                 for (i = 3; i < value; i++) {
                     if (value % i == 0) {

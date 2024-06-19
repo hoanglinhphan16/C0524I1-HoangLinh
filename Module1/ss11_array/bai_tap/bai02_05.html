@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = ['c', 's', 'c', '2', '6', '1'];
+        let arrLength;
+        let arr2 = [];
+        let count = 0;
+
+        do {
+            arrLength = +prompt("Nhap vao do dai 1 mang")
+        } while (!arrLength);
+
+        for (i = 0; i < arrLength; i++) {
+            arr2[i] = prompt("Nhap vao 1 phan tu")
+        }
+
+        for (j = 0; j < arr2.length; j++) {
+            for (k = j; k < arr.length; k++) {
+                if (arr2[j] == arr[k]) {
+                    count += 1;
+                }
+                break;
+            }
+        }
+
+        if (count == arr.length) {
+            console.log('2 mang trung nhau');
+        } else console.log('2 mang ko trung nhau');
+    </script>
+
+</body>
+
+</html>

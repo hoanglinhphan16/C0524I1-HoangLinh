@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = []
+        for (i = 0; i < 10; i++) {
+            arr[i] = +prompt("Nhap vao 1 phan tu")
+        }
+
+        let valueToCheck = +prompt("Nhap 1 phan tu bat ky de kiêm tra");
+        let check = false;
+        for (j = 0; j < arr.length; j++) {
+            if (valueToCheck == arr[j]) {
+                check = true
+            }
+        }
+
+        if (check) {
+            console.log(`${valueToCheck} is in the array`);
+        } else {
+            console.log(`${valueToCheck} isn't in the array`);
+        }
+    </script>
+</body>
+
+</html>

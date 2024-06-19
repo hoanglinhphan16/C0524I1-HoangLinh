@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="value">
+    <button onclick="translateWord()">Dịch</button>
+    <p id="result"></p>
+    <script>
+        const traiCay = ["táo", "cam", "chuối", "xoài", "thơm", "mít", "chanh vàng"]
+        const fruist = ["Apple", "Orange", "Banana", "Mango", "Pineapple", "Jackfruit", "Lemon"]
+
+        const translateWord = () => {
+            const value = document.getElementById("value").value
+            for (i = 0; i < fruist.length; i++) {
+                if (value == fruist[i]) {
+                    document.getElementById("result").innerHTML = traiCay[i]
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

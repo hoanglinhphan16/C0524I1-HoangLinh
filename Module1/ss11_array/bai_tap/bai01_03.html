@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arrLength = +prompt("Nhap vao do dai mang");
+        let arr = []
+        let max = arr[1], index = 0, sum = 0
+
+        for (i = 0; i < arrLength; i++) {
+            arr[i] = +prompt("Nhap vao 1 phan tu")
+        }
+
+        for (j = 0; j < arr.length; j++) {
+            sum += arr[j]
+            console.log(arr[j]);
+            if (arr[j] > max) {
+                max = arr[j]
+                index = j
+            }
+        }
+        let average = sum / arr.length
+        console.log(`Max = ${max} ở vị trí ${index} và trung bình cộng của giá trị trong mảng là ${average}`);
+    </script>
+</body>
+
+</html>

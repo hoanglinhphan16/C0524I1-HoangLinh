@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="txtValue" />
+    <input type="button" id="btnAdd" value="Add" onclick="addToArray();" />
+    <input type="button" id="btnDisplay" value="Display" onclick="displayArray();" />
+    <div id="result"></div>
+    <script>
+        let array = []
+
+        for (i = 0; i < 5; i++) {
+            array[i] = prompt()
+        }
+        console.log(array);
+
+        const addToArray = () => {
+            let value = document.getElementById("txtValue").value
+            array.push(value);
+            document.getElementById("txtValue").value = ""
+        }
+
+        const displayArray = () => {
+            let e = "<hr/>"
+
+            for (i = 0; i < array.length; i++) {
+                e += `Element ${i} = ${array[i]} <br/>`
+            }
+
+            document.getElementById('result').innerHTML = e
+        }
+    </script>
+</body>
+
+</html>
