@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const findValue = (array) => {
+            let count = 0;
+            let check = false;
+            const value = prompt("Nhap vao 1 ki tu de tim kiem")
+
+            for (i = 0; i < array.length; i++) {
+                if (value == array[i]) {
+                    count += 1;
+                    check = true;
+                }
+            }
+
+            return { check, count, value }
+        }
+
+        const arrLength = +prompt("Nhap vao do dai mang");
+        let arr = [];
+
+
+        for (i = 0; i < arrLength; i++) {
+            arr[i] = prompt("Nhap vao 1 phan tu")
+        }
+
+        const result = findValue(arr)
+        if (result.check) {
+            console.log(`${result.value} xuat hien ${result.count} lan`);
+        } else {
+            console.log(`${result.value} ko co trong mang`);
+        }
+
+    </script>
+</body>
+
+</html>

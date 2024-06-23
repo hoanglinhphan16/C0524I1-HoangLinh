@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"]
+        let arr2 = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"]
+
+        let value = prompt("Nhap vao 1 chom sao");
+        let index = 0;
+        let check = false;
+        for (i = 0; i < arr.length; i++) {
+            if (value == arr[i]) {
+                index = i;
+                check = true;
+                break;
+            }
+        }
+        if (!check) {
+            alert("Ko tim thay")
+        } else document.write(arr2[index]);
+
+
+    </script>
+</body>
+
+</html>

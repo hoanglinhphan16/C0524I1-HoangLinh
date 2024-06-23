@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="meter"></p>
+    <p id="foot"></p>
+    <script>
+
+        const footToMeter = (foot) => {
+            let meter = foot * 0.305;
+            document.write(`${foot} foot  = ${meter} meter`);
+            return meter;
+        }
+
+        const meterToFoot = (meter) => {
+            let foot = 3.279 * meter;
+            document.write(`${meter} meter  = ${foot} foot`);
+            return foot;
+        }
+
+        let foot = +prompt("Nhap vao feet");
+        let meter = +prompt("Nhap vao meter");
+
+        footToMeter(foot);
+        document.write("<br/>")
+        meterToFoot(meter);
+
+    </script>
+</body>
+
+</html>
