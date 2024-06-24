@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="javascript:displayArray()">
+    <div>
+        <h4>Add new product</h4>
+        <input type="text" name="" id="inputValue">
+        <button onclick="addValue(this.value)">Add</button>
+    </div>
+    <div>
+        <h4>Display all product</h4>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        let arr = ["Sony Xperia", "Samsung Galaxy", "Nokia 6", "Xiaomi Redmi Note 4", "Apple iPhone 6s", "Xiaomi Mi 5s Plus", "Apple iPhone 8plus", "Fujitsu F-04E", "Oppo A71"]
+        let editStatus = false;
+        let indexEdit = null;
+        const displayArray = () => {
+            let e = "<hr/>";
+            for (i = 0; i < arr.length; i++) {
+                e += ` <p> ${arr[i]}  <button onclick="editValue(${i})">Edit</button> <button onclick="deleteValue(${i})">Delete</button> </p>`
+            }
+
+            document.getElementById("result").innerHTML = e;
+        }
+
+        const addValue = () => {
+            let value = document.getElementById("inputValue").value;
+            if (editStatus) {
+                arr[indexEdit] = value;
+                displayArray();
+                editStatus = false;
+            } else {
+                arr.push(value);
+                displayArray()
+            }
+            document.getElementById("inputValue").value = "";
+        }
+
+        const editValue = (index) => {
+            document.getElementById("inputValue").value = arr[index];
+            editStatus = true;
+            indexEdit = index;
+        }
+
+        const deleteValue = (index) => {
+            arr.splice(index, 1);
+            displayArray();
+        }
+    </script>
+</body>
+
+</html>
