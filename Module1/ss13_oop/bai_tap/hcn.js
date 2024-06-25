@@ -27,12 +27,15 @@ class HCN {
     getPerimeter() {
         return (this.width + this.height) * 2;
     }
+
+    draw(id) {
+        let canvas = document.getElementById(id);
+        let ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#fa4b2a';
+        ctx.fillRect(10, 10, this.width, this.height)
+    }
 }
 
 let myHCN = new HCN(100, 50);
+myHCN.draw('myCanvas')
 console.log(myHCN);
-
-let canvas = document.getElementById("myCanvas");
-let ctx = canvas.getContext('2d');
-ctx.fillStyle = '#fa4b2a';
-ctx.fillRect(10, 10, myHCN.width, myHCN.height)
