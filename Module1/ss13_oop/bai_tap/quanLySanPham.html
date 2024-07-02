@@ -13,7 +13,7 @@
         <input type="text" name="" id="idValue">
         <input type="text" name="" id="nameValue">
         <input type="text" name="" id="priceValue">
-        <button onclick="addValue()">Add</button>
+        <button onclick="addValue()" id="button">Add</button>
     </div>
     <div>
         <h4>Display all product</h4>
@@ -63,6 +63,8 @@
                 arr[indexEdit].price = priceValue;
                 displayArray();
                 editStatus = false;
+                let text = document.getElementById("button").innerHTML;
+                document.getElementById("button").innerHTML = text.replace("Edit", "Add")
             } else {
                 let newValue = new Phone(idValue, nameValue, priceValue);
                 arr.push(newValue);
@@ -79,6 +81,8 @@
             document.getElementById("priceValue").value = arr[index].price;
             editStatus = true;
             indexEdit = index;
+            let text = document.getElementById("button").innerHTML;
+            document.getElementById("button").innerHTML = text.replace("Add", "Edit")
         }
 
         const deleteValue = (index) => {

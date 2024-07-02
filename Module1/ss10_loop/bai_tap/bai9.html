@@ -27,7 +27,7 @@
 
         for (a = 1; a <= 5; a++) {
             for (b = 1; b <= 5 - a; b++) {
-                document.write("^");
+                document.write("$");
             }
             for (b = 1; b <= a; b++) {
                 document.write("*");
@@ -38,13 +38,33 @@
         document.write("<br>");
 
         for (a = 1; a <= 5; a++) {
-            for (b = 1; b <= a - 1; b++) {
-                document.write("^");
+            // for (b = 1; b <= a - 1; b++) {
+            //     document.write("^");
+            // }
+            // for (b = 1; b <= 6 - a; b++) {
+            //     document.write("*");
+            // }
+            // document.write("<br>");
+            let msg = ""
+            for (b = 5; b >= 1; b--) {
+                if (b < a) {
+                    msg += " "
+                } else msg += "*"
+
             }
-            for (b = 1; b <= 6 - a; b++) {
-                document.write("*");
+            console.log(msg);
+        }
+
+        for (let i = 1; i <= 5; i++) {
+            let msg = "";
+            for (let j = 5; j >= 1; j--) {
+                if (j > i) {
+                    msg += " "
+                } else {
+                    msg += "#"
+                }
             }
-            document.write("<br>");
+            console.log(msg);
         }
     </script>
 </body>
