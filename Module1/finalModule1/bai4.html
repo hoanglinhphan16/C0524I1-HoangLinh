@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="javascript:displayArray()">
+    <div>
+        <h4>Add new product</h4>
+        <input type="text" name="" id="maDth">
+        <input type="text" name="" id="ten">
+        <input type="text" name="" id="hangSX">
+        <input type="text" name="" id="gia">
+        <button onclick="addValue()" id="button">Add</button>
+    </div>
+    <div>
+        <h4>Display all product</h4>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        class Phone {
+            constructor(maDth, ten, hangSX, gia) {
+                this.maDth = maDth,
+                    this.ten = ten,
+                    this.hangSX = hangSX,
+                    this.gia = gia
+            }
+
+            setMaDth = (maDth) => {
+                this.maDth = maDth;
+            }
+
+            getMaDth = () => {
+                return this.maDth;
+            }
+
+            setTen = (ten) => {
+                this.ten = ten;
+            }
+
+            getTen = () => {
+                return this.ten;
+            }
+
+            setHangSX = (hangSX) => {
+                this.hangSX = hangSX;
+            }
+
+            getHangSX = () => {
+                return this.hangSX;
+            }
+
+            setGia = (gia) => {
+                this.gia = gia;
+            }
+
+            getGia = () => {
+                return this.gia;
+            }
+
+            toString = () => {
+                return `${this.maDth} ${this.ten} ${this.hangSX} ${this.gia}`
+            }
+        }
+
+        let sony = new Phone("6MxJ2", "Sony Xperia", "Sony", 10000000)
+        let samsung = new Phone("5uKKIsZ", "Samsung Galaxy", "Samsung", 10000000)
+        let nokia = new Phone("4MKHFobF5", "Nokia 6", "Nokia", 10000000)
+        let xiaomi = new Phone("MNi3QuS", "Xiaomi Redmi Note 4", "Xiaomi", 10000000)
+        let apple = new Phone("PPnZh27", "Apple iPhone 6s", "Apple", 10000000)
+        let oppo = new Phone("8JKma0", "Oppo A71", "Oppo", 10000000)
+
+        let arr = [sony, samsung, nokia, xiaomi, apple, oppo];
+        arr.sort((a, b) => a.ten < b.ten ? -1 : 1);
+
+        const displayArray = () => {
+            let table = "<table border='1' width='100%' cellspacing='0' cellpadding='15' style='text-align:center'";
+            for (i = 0; i < arr.length; i++) {
+                table += `<tr> 
+                    <td>${arr[i].maDth}</td>
+                    <td>${arr[i].ten}</td>
+                    <td>${arr[i].hangSX}</td>
+                    <td>${arr[i].gia}</td>`;
+            }
+            table += `</table>`;
+            document.getElementById("result").innerHTML = table;
+        }
+
+        const addValue = () => {
+            let maDth = document.getElementById("maDth").value;
+            let ten = document.getElementById("ten").value;
+            let hangSX = document.getElementById("hangSX").value;
+            let gia = document.getElementById("gia").value;
+
+            let newValue = new Phone(maDth, ten, hangSX, gia);
+            arr.push(newValue);
+            displayArray()
+
+            document.getElementById("maDth").value = "";
+            document.getElementById("ten").value = "";
+            document.getElementById("hangSX").value = "";
+            document.getElementById("gia").value = "";
+        }
+    </script>
+</body>
+
+</html>

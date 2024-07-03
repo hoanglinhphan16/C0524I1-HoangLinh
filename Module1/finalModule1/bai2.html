@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const checkUpperChar = (value) => {
+            let count = 0;
+
+            for (e of value) {
+                if (e === " ") {
+                    continue;
+                } else if (e === e.toUpperCase()) {
+                    count++;
+                }
+            }
+            if (count) {
+                return count;
+            } else return document.write(`the String is not contain upper char`);
+        }
+
+        let result = checkUpperChar("   abcdeEEE");
+        console.log(result);
+    </script>
+</body>
+
+</html>
