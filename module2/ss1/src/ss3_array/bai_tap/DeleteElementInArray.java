@@ -21,23 +21,27 @@ public class DeleteElementInArray {
         int value = sc.nextInt();
         for (int i = 0; i < array.length; i++) {
             if (array[i] == value) {
-                array[i] = 0;
-                index_del = i;
                 isExist = true;
+                for (int j = i; j < array.length - 1; j++) {
+                    array[j] = array[j + 1];
+                }
+                array[array.length - 1] = 0;
+                i--;
             }
         }
+//        for (int i = 0; i < array.length; i++) {
+//            if (array[i] == value) {
+//                array[i] = 0;
+//                index_del = i;
+//                isExist = true;
+//            }
+//        }
 
         if (isExist) {
-            for (int j = index_del; j < array.length-1; j++) {
-                int temp = array[j];
-                array[j] = array[j+1];
-                array[j+1] = temp;
-            }
+            System.out.println("Da xoa");
+            System.out.println(Arrays.toString(array));
         } else {
             System.out.println("Ko co phan tu nay de xoa");
         }
-
-
-        System.out.println(Arrays.toString(array));
     }
 }
