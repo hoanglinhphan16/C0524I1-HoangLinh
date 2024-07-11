@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class StopWatch {
     LocalDate startTime, stopTime;
+    static String name = "abc";
     public StopWatch() {}
 
     public StopWatch(LocalDate startTime, LocalDate stopTime) {
