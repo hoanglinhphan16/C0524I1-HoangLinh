@@ -1,10 +1,16 @@
 package ss6_inheritance.thuc_hanh;
 
-public class Rectangle extends Geometric{
+import ss7_abstractClass_interface.bai_tap.Colorable;
+import ss7_abstractClass_interface.bai_tap.Resizeable;
+
+public class Rectangle extends Geometric implements Resizeable{
     private double width;
     private double height;
 
-    public Rectangle() {}
+    public Rectangle() {
+        this.width = 10;
+        this.height = 5;
+    }
 
     public Rectangle(double width, double height) {
         this.width = width;
@@ -41,4 +47,14 @@ public class Rectangle extends Geometric{
     public double getPerimeter() {
         return 2 * (width + height);
     }
+
+    @Override
+    public void resize(double percent) {
+        System.out.println("Old area Rectangle = " + getArea());
+        setWidth( (width * 100) / percent);
+        setHeight((height * 100) / percent);
+        System.out.println("New area Rectangle = " + getArea());
+    }
+
+
 }
