@@ -31,7 +31,6 @@ public class SquareResize extends Geometric implements Resizeable, Colorable {
         return side * side;
     }
 
-
     @Override
     public String toString() {
         return "A Square with side="
