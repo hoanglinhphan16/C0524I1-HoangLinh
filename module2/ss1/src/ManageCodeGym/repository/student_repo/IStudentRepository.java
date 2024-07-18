@@ -3,6 +3,11 @@ package ManageCodeGym.repository.student_repo;
 
 import ManageCodeGym.model.Student;
 
+import java.util.ArrayList;
+
 public interface IStudentRepository {
-    Student[] findAll();
+    ArrayList<Student> findAll();
+    void add(Student student);
+    void update(int index, Student student);
+    void remove(int index);
 }
