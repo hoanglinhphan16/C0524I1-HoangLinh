@@ -37,7 +37,8 @@ public class StudentController {
                     "3. Chỉnh sửa thông tin \n" +
                     "4. Xoá học viên \n" +
                     "5. Tìm kiếm học viên \n" +
-                    "6. Trở về trang chủ");
+                    "6. Sắp xếp danh sách \n" +
+                    "7. Trở về trang chủ");
 
             choice = Integer.parseInt(sc.nextLine());
 
@@ -61,10 +62,43 @@ public class StudentController {
                 case 5:
                     System.out.println("Tìm kiếm học viên");
                     searchStudent();
+                    break;
                 case 6:
+                    System.out.println("Sắp xếp danh sách\n" +
+                            "1. Sắp xếp theo tên \n" +
+                            "2. Sắp xếp theo ID \n" +
+                            "3. Trở về");
+
+                    int choice2 = Integer.parseInt(sc.nextLine());
+                    switch (choice2) {
+                        case 1:
+                            sortByName();
+                            break;
+                        case 2:
+                            sortById();
+                            break;
+                        case 3:
+                            return;
+                    }
+                    break;
+                case 8:
                     return;
             }
         } while (true);
+    }
+
+    public void sortByName() {
+        ArrayList<Student> listStudents = (ArrayList<Student>) students.clone();
+        listStudents.sort((std1, std2) -> std1.getName().compareTo(std2.getName()));
+        for (Student student : listStudents) {
+            System.out.println(student);
+        }
+    }
+
+    public void sortById() {
+        ArrayList<Student> listStudents = (ArrayList<Student>) students.clone();
+        listStudents.sort((std1, std2) -> std1.getId() - std2.getId());
+        listStudents.forEach(System.out::println);
     }
 
     public void searchStudent() {
@@ -73,7 +107,7 @@ public class StudentController {
         String name = sc.nextLine();
 
         students.forEach(student -> {
-            if (student.getName().contains(name)) {
+            if (student.getName().toLowerCase().contains(name)) {
                 System.out.println(student);
             }
         });

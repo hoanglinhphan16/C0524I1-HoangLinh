@@ -26,6 +26,7 @@ public class MyMap {
         }
 
         System.out.println(map3);
+        System.out.println(map.entrySet());
 
         for (Map.Entry<String, String> entry : map.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());

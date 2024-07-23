@@ -9,11 +9,17 @@ public class TeacherRepository implements ITeacherRepository{
     private static final ArrayList<Teacher> teachers = new ArrayList<>();
 
     static {
-        Teacher teacher1 = new Teacher(3,"Quynh Nhu", LocalDate.parse("1999-06-01"), "hoanglinhphan16@gmail.com", "0905089207", "Master");
-        Teacher teacher2 = new Teacher(4,"Nhu Quynh", LocalDate.parse("1999-01-06"), "luckyfarming16@gmail.com", "0559072642", "Professor");
+        Teacher teacher1 = new Teacher(34,"Quynh Nhu", LocalDate.parse("1999-06-01"), "hoanglinhphan16@gmail.com", "0905089207", "Master");
+        Teacher teacher2 = new Teacher(43,"Tuan Anh", LocalDate.parse("1999-01-06"), "luckyfarming16@gmail.com", "0559072642", "Professor");
+        Teacher teacher3 = new Teacher(9,"Lan Nhi", LocalDate.parse("1999-01-06"), "luckyfarming16@gmail.com", "0559072642", "Professor");
+        Teacher teacher4 = new Teacher(11,"To Uyen", LocalDate.parse("1999-01-06"), "luckyfarming16@gmail.com", "0559072642", "Professor");
+        Teacher teacher5 = new Teacher(22,"My Huyen", LocalDate.parse("1999-01-06"), "luckyfarming16@gmail.com", "0559072642", "Professor");
 
         teachers.add(teacher1);
         teachers.add(teacher2);
+        teachers.add(teacher3);
+        teachers.add(teacher4);
+        teachers.add(teacher5);
     }
 
     @Override

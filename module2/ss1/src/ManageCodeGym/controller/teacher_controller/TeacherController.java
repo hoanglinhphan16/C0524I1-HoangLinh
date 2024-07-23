@@ -30,7 +30,8 @@ public class TeacherController {
                     "3. Chỉnh sửa \n" +
                     "4. Xoá \n" +
                     "5. Tìm kiếm giảng viên \n" +
-                    "6. Trở về trang chủ");
+                    "6. Sắp xếp danh sách \n" +
+                    "7. Trở về trang chủ");
 
             choice = Integer.parseInt(sc.nextLine());
 
@@ -55,9 +56,38 @@ public class TeacherController {
                     System.out.println("Tìm kiếm giảng viên");
                     searchTeacher();
                 case 6:
+                    System.out.println("Bạn muốn sắp xếp theo gì?: \n" +
+                            "1. Theo tên \n" +
+                            "2. Theo ID \n" +
+                            "3. Trở về");
+                    int choice2 = Integer.parseInt(sc.nextLine());
+                    switch (choice2) {
+                        case 1:
+                            sortByName();
+                            break;
+                        case 2:
+                            sortById();
+                            break;
+                        case 3:
+                            return;
+                    }
+
+                case 7:
                     return;
             }
         } while (true);
+    }
+
+    public void sortByName() {
+        ArrayList<Teacher> listTeacher = teachers;
+        listTeacher.sort((a, b) -> a.getName().compareToIgnoreCase(b.getName()));
+        listTeacher.forEach(System.out::println);
+    }
+
+    public void sortById() {
+        ArrayList<Teacher> listTeacher = teachers;
+        listTeacher.sort((a, b) -> a.getId() - b.getId());
+        listTeacher.forEach(System.out::println);
     }
 
     public void searchTeacher() {
@@ -66,7 +96,7 @@ public class TeacherController {
         String name = sc.nextLine();
 
         teachers.forEach(teacher -> {
-            if (teacher.getName().contains(name)) {
+            if (teacher.getName().toLowerCase().contains(name)) {
                 System.out.println(teacher);
             }
         });
