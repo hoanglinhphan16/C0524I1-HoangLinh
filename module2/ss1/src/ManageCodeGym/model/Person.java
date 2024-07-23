@@ -3,16 +3,26 @@ package ManageCodeGym.model;
 import java.time.LocalDate;
 
 public abstract class Person {
+    private int id;
     private String name;
     private LocalDate birthDate;
     private String email;
     private String phoneNumber;
 
-    public Person(String name, LocalDate birthDate, String email, String phoneNumber) {
+    public Person(int id, String name, LocalDate birthDate, String email, String phoneNumber) {
+        this.id = id;
         this.name = name;
         this.birthDate = birthDate;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -49,12 +59,11 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return  "name='" + name + '\'' +
+        return  "ID='" + id + '\'' +
+                "name='" + name + '\'' +
                 ", birthDate=" + birthDate +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
-
-    public abstract void talk();
 }

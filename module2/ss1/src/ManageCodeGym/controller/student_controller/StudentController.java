@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 public class StudentController {
     private IStudentService studentService = new StudentService();
+    ArrayList<Student> students = studentService.findAll();
 
     public void displayAllStudents() {
-        ArrayList<Student> students = studentService.findAll();
         for (Student student : students) {
             if (student != null) {
                 System.out.println(student);
@@ -36,7 +36,8 @@ public class StudentController {
                     "2. Thêm mới học viên \n" +
                     "3. Chỉnh sửa thông tin \n" +
                     "4. Xoá học viên \n" +
-                    "5. Trở về trang chủ");
+                    "5. Tìm kiếm học viên \n" +
+                    "6. Trở về trang chủ");
 
             choice = Integer.parseInt(sc.nextLine());
 
@@ -58,34 +59,70 @@ public class StudentController {
                     removeStudent();
                     break;
                 case 5:
+                    System.out.println("Tìm kiếm học viên");
+                    searchStudent();
+                case 6:
                     return;
             }
         } while (true);
     }
 
+    public void searchStudent() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập vào tên học viên muốn tìm");
+        String name = sc.nextLine();
+
+        students.forEach(student -> {
+            if (student.getName().contains(name)) {
+                System.out.println(student);
+            }
+        });
+    }
+
     public void updateStudent() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Chọn vị trí bạn muốn sửa đổi");
-        int index = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter ID you want to update: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        int index = 0;
+        boolean check = false;
 
-        Student student = scanInputOfStudent();
-
-        studentService.update(index, student);
+        for (Student student : students) {
+            if (student.getId() == id) {
+                check = true;
+                index = students.indexOf(student);
+            }
+        }
+        if (check) {
+            Student student = scanInputOfStudent(id);
+            studentService.update(index, student);
+        } else System.out.println("Wrong ID");
     }
 
     public void removeStudent() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter index of Student: ");
-        int index = Integer.parseInt(scanner.nextLine());
-        studentService.remove(index);
+        System.out.println("Enter ID of Student: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        boolean check = false;
+        int index = 0;
+        for (Student student : students) {
+            if (student.getId() == id) {
+//                check = true;
+//                index = students.indexOf(student);
+                studentService.remove(student);
+                break;
+            }
+        }
     }
 
     public void addStudent() {
-        Student student = scanInputOfStudent();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter student ID: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        Student student = scanInputOfStudent(id);
         studentService.add(student);
     }
 
-    public Student scanInputOfStudent() {
+    public Student scanInputOfStudent(int id) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter student name: ");
         String name = scanner.nextLine();
@@ -99,6 +136,6 @@ public class StudentController {
         System.out.println("Enter student class name: ");
         String className = scanner.nextLine();
 
-        return new Student(name, birthDate, email, phoneNumber, className);
+        return new Student(id, name, birthDate, email, phoneNumber, className);
     }
 }

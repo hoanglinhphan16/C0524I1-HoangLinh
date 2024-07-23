@@ -8,5 +8,5 @@ public interface ITeacherService {
     ArrayList<Teacher> findAll();
     void add(Teacher teacher);
     void update(int index, Teacher teacher);
-    void delete(int index);
+    void delete(Teacher teacher);
 }

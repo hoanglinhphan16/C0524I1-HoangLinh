@@ -8,5 +8,5 @@ public interface IStudentService {
     ArrayList<Student> findAll();
     void add(Student student);
     void update(int index, Student student);
-    void remove(int index);
+    void remove(Student student);
 }

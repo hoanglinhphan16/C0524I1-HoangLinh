@@ -5,20 +5,22 @@ import ManageCodeGym.service.teach_service.ITeacherService;
 import ManageCodeGym.service.teach_service.TeacherService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TeacherController {
-    private ITeacherService teacherService = new TeacherService();
+    private final ITeacherService teacherService = new TeacherService();
+    ArrayList<Teacher> teachers = teacherService.findAll();
 
     public void displayAllTeachers() {
-        for (Teacher t : teacherService.findAll()) {
+        for (Teacher t : teachers) {
             if (t != null) {
                 System.out.println(t);
             }
         }
     }
 
-    public void displayTeachertFunc(){
+    public void displayTeachertFunc() {
         int choice = 0;
         Scanner sc = new Scanner(System.in);
         do {
@@ -27,7 +29,8 @@ public class TeacherController {
                     "2. Thêm mới \n" +
                     "3. Chỉnh sửa \n" +
                     "4. Xoá \n" +
-                    "5. Trở về trang chủ");
+                    "5. Tìm kiếm giảng viên \n" +
+                    "6. Trở về trang chủ");
 
             choice = Integer.parseInt(sc.nextLine());
 
@@ -49,9 +52,24 @@ public class TeacherController {
                     deleteTeacher();
                     break;
                 case 5:
+                    System.out.println("Tìm kiếm giảng viên");
+                    searchTeacher();
+                case 6:
                     return;
             }
         } while (true);
+    }
+
+    public void searchTeacher() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập tên giảng viên");
+        String name = sc.nextLine();
+
+        teachers.forEach(teacher -> {
+            if (teacher.getName().contains(name)) {
+                System.out.println(teacher);
+            }
+        });
     }
 
     public void addTeacher() {
@@ -61,6 +79,8 @@ public class TeacherController {
 
     public Teacher scanInputOfTeacher() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter teacher ID: ");
+        int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter teacher name: ");
         String name = scanner.nextLine();
         System.out.println("Enter teacher birth date: ");
@@ -73,23 +93,37 @@ public class TeacherController {
         System.out.println("Enter teacher level: ");
         String level = scanner.nextLine();
 
-        return new Teacher(name, birthDate, email, phoneNumber, level);
+        return new Teacher(id, name, birthDate, email, phoneNumber, level);
     }
 
     public void updateTeacher() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter index you want to update: ");
-        int index = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter ID you want to update: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        int index = 0;
+        boolean check = false;
 
-        Teacher teacher = scanInputOfTeacher();
-        teacherService.update(index, teacher);
+        for (Teacher teacher : teachers) {
+            if (teacher.getId() == id) {
+                check = true;
+                index = teachers.indexOf(teacher);
+            }
+        }
+        if (check) {
+            Teacher teacher = scanInputOfTeacher();
+            teacherService.update(index, teacher);
+        } else System.out.println("Wrong ID");
     }
 
     public void deleteTeacher() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter index you want to delete: ");
-        int index = Integer.parseInt(scanner.nextLine());
-
-        teacherService.delete(index);
+        System.out.println("Enter ID of Student: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        for (Teacher teacher : teachers) {
+            if (teacher.getId() == id) {
+                teachers.remove(teacher);
+                break;
+            }
+        }
     }
 }

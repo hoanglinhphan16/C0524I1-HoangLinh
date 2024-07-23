@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public class Teacher extends Person {
     private String level;
 
-    public Teacher(String name, LocalDate birthDate, String email, String phoneNumber, String level) {
-        super(name, birthDate, email, phoneNumber);
+    public Teacher(int id, String name, LocalDate birthDate, String email, String phoneNumber, String level) {
+        super(id, name, birthDate, email, phoneNumber);
         this.level = level;
     }
 
@@ -19,14 +19,10 @@ public class Teacher extends Person {
     }
 
     @Override
-    public void talk() {
-        System.out.println("Hello i'm your teacher in this year");
-    }
-
-    @Override
     public String toString() {
         return "Teacher{"
-                + "name='" + super.getName()
+                + "ID='" + super.getId()
+                + "' name='" + super.getName()
                 + "' birthDay='" + super.getBirthDate()
                 + "' email='" + super.getEmail()
                 + "' phoneNumber='" + super.getPhoneNumber()

@@ -26,7 +26,7 @@ public class TeacherService implements ITeacherService {
     }
 
     @Override
-    public void delete(int index) {
-        teacherRepo.delete(index);
+    public void delete(Teacher teacher) {
+        teacherRepo.delete(teacher);
     }
 }

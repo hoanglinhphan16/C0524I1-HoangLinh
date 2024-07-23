@@ -25,7 +25,7 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public void remove(int index) {
-        studentRepository.remove(index);
+    public void remove(Student student) {
+        studentRepository.remove(student);
     }
 }

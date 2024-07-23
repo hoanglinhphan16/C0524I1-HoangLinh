@@ -9,12 +9,13 @@ public class TeacherRepository implements ITeacherRepository{
     private static final ArrayList<Teacher> teachers = new ArrayList<>();
 
     static {
-        Teacher teacher1 = new Teacher("Quynh Nhu", LocalDate.parse("1999-06-01"), "hoanglinhphan16@gmail.com", "0905089207", "Master");
-        Teacher teacher2 = new Teacher("Nhu Quynh", LocalDate.parse("1999-01-06"), "luckyfarming16@gmail.com", "0559072642", "Professor");
+        Teacher teacher1 = new Teacher(3,"Quynh Nhu", LocalDate.parse("1999-06-01"), "hoanglinhphan16@gmail.com", "0905089207", "Master");
+        Teacher teacher2 = new Teacher(4,"Nhu Quynh", LocalDate.parse("1999-01-06"), "luckyfarming16@gmail.com", "0559072642", "Professor");
 
         teachers.add(teacher1);
         teachers.add(teacher2);
     }
+
     @Override
     public ArrayList<Teacher> findAll() {
         return teachers;
@@ -31,8 +32,8 @@ public class TeacherRepository implements ITeacherRepository{
     }
 
     @Override
-    public void delete(int index) {
-        teachers.remove(index);
+    public void delete(Teacher teacher) {
+        teachers.remove(teacher);
     }
 
 
