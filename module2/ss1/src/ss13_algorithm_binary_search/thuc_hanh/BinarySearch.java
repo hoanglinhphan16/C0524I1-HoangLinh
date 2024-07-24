@@ -1,4 +1,4 @@
-package ss13_algorithm.thuc_hanh;
+package ss13_algorithm_binary_search.thuc_hanh;
 
 public class BinarySearch {
     static int binarySearch(int[] array, int target) {

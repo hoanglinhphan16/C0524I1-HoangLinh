@@ -1,4 +1,4 @@
-package ss13_algorithm.bai_tap;
+package ss13_algorithm_binary_search.bai_tap;
 
 public class BinarySearch {
     public static int binarySearch(int[] array, int left, int right , int value) {
