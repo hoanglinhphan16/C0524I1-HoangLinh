@@ -25,8 +25,8 @@ public abstract class Transportations {
         this.licensePlate = licensePlate;
     }
 
-    public Manufacturer getManufacturer() {
-        return manufacturer;
+    public String getManufacturer() {
+        return manufacturer.getManufacturerName();
     }
 
     public void setManufacturer(Manufacturer manufacturer) {

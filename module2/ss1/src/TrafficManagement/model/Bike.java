@@ -27,7 +27,11 @@ public class Bike extends Transportations{
     @Override
     public String toString() {
         return "Bike{" +
-                "power=" + power +
+                "owner="+ super.getOwner() +
+                ", manufacturingDate=" + super.getManufacturingDate() +
+                ", manufacturer=" + super.getManufacturer() +
+                ", licensePlate=" + super.getLicensePlate() +
+                ", power=" + power +
                 '}';
     }
 }

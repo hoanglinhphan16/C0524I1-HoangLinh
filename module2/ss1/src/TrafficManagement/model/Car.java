@@ -38,7 +38,11 @@ public class Car extends Transportations{
     @Override
     public String toString() {
         return "Car{" +
-                "seats=" + seats +
+                "owner=" + super.getOwner() +
+                ", manufacturingDate=" + getManufacturingDate() +
+                ", manufacturer=" + super.getManufacturer() +
+                ", licensePlate=" + super.getLicensePlate() +
+                ", seats=" + seats +
                 ", typeOfCar='" + typeOfCar + '\'' +
                 '}';
     }

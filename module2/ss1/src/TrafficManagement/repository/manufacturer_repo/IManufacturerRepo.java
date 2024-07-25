@@ -4,6 +4,6 @@ import TrafficManagement.model.Manufacturer;
 
 import java.util.List;
 
-public interface IManufacturer_repo {
+public interface IManufacturerRepo {
     List<Manufacturer> getManufacturers();
 }

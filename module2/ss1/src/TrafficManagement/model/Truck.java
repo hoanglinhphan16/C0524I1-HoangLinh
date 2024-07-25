@@ -27,6 +27,10 @@ public class Truck extends Transportations{
     @Override
     public String toString() {
         return "Truck{" +
+                "owner" + super.getOwner() +
+                ", manufacturingDate" + super.getManufacturingDate() +
+                ", manufacturer" + super.getManufacturer() +
+                ", licensePlate" + super.getLicensePlate() +
                 "weight=" + weight +
                 '}';
     }

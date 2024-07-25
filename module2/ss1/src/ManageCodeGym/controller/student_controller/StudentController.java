@@ -4,6 +4,7 @@ import ManageCodeGym.model.Student;
 import ManageCodeGym.service.student_service.IStudentService;
 import ManageCodeGym.service.student_service.StudentService;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -28,7 +29,7 @@ public class StudentController {
     }
 
     public void displayStudentFunc() {
-        int choice = 0;
+        int choice = -1;
         Scanner sc = new Scanner(System.in);
         do {
             System.out.println("Quản lý codegym: \n" +
@@ -117,13 +118,14 @@ public class StudentController {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter ID you want to update: ");
         int id = Integer.parseInt(scanner.nextLine());
-        int index = 0;
+        int index = -1;
         boolean check = false;
 
         for (Student student : students) {
             if (student.getId() == id) {
                 check = true;
                 index = students.indexOf(student);
+                break;
             }
         }
         if (check) {
@@ -136,12 +138,9 @@ public class StudentController {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter ID of Student: ");
         int id = Integer.parseInt(scanner.nextLine());
-        boolean check = false;
-        int index = 0;
         for (Student student : students) {
             if (student.getId() == id) {
-//                check = true;
-//                index = students.indexOf(student);
+
                 studentService.remove(student);
                 break;
             }
@@ -150,19 +149,43 @@ public class StudentController {
 
     public void addStudent() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter student ID: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        boolean isExist;
+        int id;
+
+        do {
+            System.out.println("Enter student ID: ");
+            id = Integer.parseInt(scanner.nextLine());
+            isExist = false;
+            for (Student student : students) {
+                if (student.getId() == id) {
+                    System.out.println("Student already exist");
+                    isExist = true;
+                    break;
+                }
+            }
+        } while (isExist);
         Student student = scanInputOfStudent(id);
         studentService.add(student);
     }
 
     public Student scanInputOfStudent(int id) {
+        LocalDate birthDate = null;
+        boolean checkFormat;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter student name: ");
         String name = scanner.nextLine();
-        System.out.println("Enter student birth date: ");
-        String temp = scanner.nextLine();
-        LocalDate birthDate = LocalDate.parse(temp);
+        do {
+            try {
+                checkFormat = false;
+                System.out.println("Enter student birth date: ");
+                String temp = scanner.nextLine();
+                birthDate = LocalDate.parse(temp);
+            } catch (DateTimeException err) {
+                checkFormat = true;
+                System.out.println("Wrong format");
+            }
+        } while (checkFormat);
+
         System.out.println("Enter student email: ");
         String email = scanner.nextLine();
         System.out.println("Enter student phone number: ");

@@ -4,6 +4,6 @@ import TrafficManagement.model.Car;
 
 import java.util.List;
 
-public interface ICar_repo {
+public interface ICarRepo {
     List<Car> getCars();
 }

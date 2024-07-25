@@ -5,7 +5,7 @@ import TrafficManagement.model.Manufacturer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Manufacturer_repo implements IManufacturer_repo{
+public class ManufacturerRepo implements IManufacturerRepo{
     private static List<Manufacturer> manufacturers = new ArrayList<Manufacturer>();
     static {
         manufacturers.add(new Manufacturer("Germany","Porsche101", "Porsche"));

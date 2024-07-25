@@ -1,9 +1,11 @@
 package ManageCodeGym.controller.teacher_controller;
 
+import ManageCodeGym.model.Student;
 import ManageCodeGym.model.Teacher;
 import ManageCodeGym.service.teach_service.ITeacherService;
 import ManageCodeGym.service.teach_service.TeacherService;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -103,19 +105,46 @@ public class TeacherController {
     }
 
     public void addTeacher() {
-        Teacher teacher = scanInputOfTeacher();
+        Scanner scanner = new Scanner(System.in);
+        boolean isExist;
+        int id;
+
+        do {
+            System.out.println("Enter student ID: ");
+            id = Integer.parseInt(scanner.nextLine());
+            isExist = false;
+            for (Teacher teacher : teachers) {
+                if (teacher.getId() == id) {
+                    System.out.println("Student already exist");
+                    isExist = true;
+                    break;
+                }
+            }
+        } while (isExist);
+
+        Teacher teacher = scanInputOfTeacher(id);
         teacherService.add(teacher);
     }
 
-    public Teacher scanInputOfTeacher() {
+    public Teacher scanInputOfTeacher(int id) {
+        boolean checkFormat;
+        LocalDate birthDate = null;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter teacher ID: ");
-        int id = Integer.parseInt(scanner.nextLine());
+
         System.out.println("Enter teacher name: ");
         String name = scanner.nextLine();
-        System.out.println("Enter teacher birth date: ");
-        String temp = scanner.nextLine();
-        LocalDate birthDate = LocalDate.parse(temp);
+        do {
+            try {
+                checkFormat = false;
+                System.out.println("Enter student birth date: ");
+                String temp = scanner.nextLine();
+                birthDate = LocalDate.parse(temp);
+            } catch (DateTimeException err) {
+                checkFormat = true;
+                System.out.println("Wrong format");
+            }
+        } while (checkFormat);
+
         System.out.println("Enter teacher email: ");
         String email = scanner.nextLine();
         System.out.println("Enter teacher phone number: ");
@@ -140,14 +169,14 @@ public class TeacherController {
             }
         }
         if (check) {
-            Teacher teacher = scanInputOfTeacher();
+            Teacher teacher = scanInputOfTeacher(id);
             teacherService.update(index, teacher);
         } else System.out.println("Wrong ID");
     }
 
     public void deleteTeacher() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter ID of Student: ");
+        System.out.println("Enter ID of teacher: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (Teacher teacher : teachers) {
             if (teacher.getId() == id) {
