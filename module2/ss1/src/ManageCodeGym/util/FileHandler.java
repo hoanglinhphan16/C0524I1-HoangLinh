@@ -125,9 +125,9 @@ public class FileHandler<E> {
 //        }
 //    }
 
-    public interface CSVConvertible<T> {
-        T fromCSVRow(String row);
-
-        String toCSVRow(T item);
-    }
+//    public interface CSVConvertible<T> {
+//        T fromCSVRow(String row);
+//
+//        String toCSVRow(T item);
+//    }
 }
