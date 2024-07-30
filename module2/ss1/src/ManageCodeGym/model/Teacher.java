@@ -10,12 +10,20 @@ public class Teacher extends Person {
         this.level = level;
     }
 
+    public Teacher() {
+
+    }
+
     public String getLevel() {
         return level;
     }
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String toCSVRow() {
+        return super.getId()+ "," + super.getName()+ "," + super.getBirthDate()+ "," + super.getEmail()+ "," + super.getPhoneNumber()+ "," + level ;
     }
 
     @Override
@@ -28,5 +36,16 @@ public class Teacher extends Person {
                 + "' phoneNumber='" + super.getPhoneNumber()
                 + "' level='" + level + '\'' +
                 '}';
+    }
+
+    public static Teacher fromCSVRow(String csvRow) {
+        String[] data = csvRow.split(",");
+        String id = data[0];
+        String name = data[1];
+        LocalDate birthDate = LocalDate.parse(data[2]);
+        String email = data[3];
+        String phoneNumber = data[4];
+        String level = data[5];
+        return new Teacher(Integer.parseInt(id), name, birthDate, email, phoneNumber, level);
     }
 }

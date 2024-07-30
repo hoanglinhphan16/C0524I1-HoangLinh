@@ -1,9 +1,12 @@
 package ManageCodeGym.controller.student_controller;
 
 import ManageCodeGym.model.Student;
+import ManageCodeGym.repository.student_repo.StudentFileHandler;
 import ManageCodeGym.service.student_service.IStudentService;
 import ManageCodeGym.service.student_service.StudentService;
+import ManageCodeGym.util.FileHandler;
 
+import java.io.File;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,9 +14,11 @@ import java.util.Scanner;
 
 public class StudentController {
     private IStudentService studentService = new StudentService();
-    ArrayList<Student> students = studentService.findAll();
+    private final String FILE_PATH = "students.csv";
+    StudentFileHandler studentFileHandler = new StudentFileHandler();
 
     public void displayAllStudents() {
+        ArrayList<Student> students = studentService.findAll();
         for (Student student : students) {
             if (student != null) {
                 System.out.println(student);
@@ -82,14 +87,14 @@ public class StudentController {
                             return;
                     }
                     break;
-                case 8:
+                case 7:
                     return;
             }
         } while (true);
     }
 
     public void sortByName() {
-        ArrayList<Student> listStudents = (ArrayList<Student>) students.clone();
+        ArrayList<Student> listStudents = studentService.findAll();
         listStudents.sort((std1, std2) -> std1.getName().compareTo(std2.getName()));
         for (Student student : listStudents) {
             System.out.println(student);
@@ -97,12 +102,13 @@ public class StudentController {
     }
 
     public void sortById() {
-        ArrayList<Student> listStudents = (ArrayList<Student>) students.clone();
+        ArrayList<Student> listStudents = studentService.findAll();
         listStudents.sort((std1, std2) -> std1.getId() - std2.getId());
         listStudents.forEach(System.out::println);
     }
 
     public void searchStudent() {
+        ArrayList<Student> students = studentService.findAll();
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập vào tên học viên muốn tìm");
         String name = sc.nextLine();
@@ -115,6 +121,7 @@ public class StudentController {
     }
 
     public void updateStudent() {
+        ArrayList<Student> students = studentService.findAll();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter ID you want to update: ");
         int id = Integer.parseInt(scanner.nextLine());
@@ -131,23 +138,33 @@ public class StudentController {
         if (check) {
             Student student = scanInputOfStudent(id);
             studentService.update(index, student);
+            FileHandler.readFromFile(student, FILE_PATH);
+            FileHandler.writeListToFile(students, FILE_PATH, false);
         } else System.out.println("Wrong ID");
+
     }
 
     public void removeStudent() {
+        ArrayList<Student> students = studentService.findAll();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter ID of Student: ");
         int id = Integer.parseInt(scanner.nextLine());
+        boolean checkId = false;
         for (Student student : students) {
             if (student.getId() == id) {
-
                 studentService.remove(student);
+                checkId = true;
                 break;
             }
         }
+        if (checkId) {
+            System.out.println("Delete success!");
+            FileHandler.writeListToFile(students, FILE_PATH, false);
+        } else System.out.println("Wrong ID");
     }
 
     public void addStudent() {
+        ArrayList<Student> students = studentService.findAll();
         Scanner scanner = new Scanner(System.in);
         boolean isExist;
         int id;
@@ -166,6 +183,7 @@ public class StudentController {
         } while (isExist);
         Student student = scanInputOfStudent(id);
         studentService.add(student);
+        FileHandler.writeToFile(student, FILE_PATH, true);
     }
 
     public Student scanInputOfStudent(int id) {
@@ -177,7 +195,7 @@ public class StudentController {
         do {
             try {
                 checkFormat = false;
-                System.out.println("Enter student birth date: ");
+                System.out.println("Enter student birth date (format YYYY-MM-DD): ");
                 String temp = scanner.nextLine();
                 birthDate = LocalDate.parse(temp);
             } catch (DateTimeException err) {

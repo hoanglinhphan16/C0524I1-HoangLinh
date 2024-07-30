@@ -11,7 +11,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public ArrayList<Student> findAll() {
-        return studentRepository.findAll();
+        return (ArrayList<Student>) studentRepository.findAll();
     }
 
     @Override
