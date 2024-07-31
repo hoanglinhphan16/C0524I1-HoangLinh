@@ -4,6 +4,7 @@ import ManageCodeGym.model.Student;
 import ManageCodeGym.repository.student_repo.StudentFileHandler;
 import ManageCodeGym.service.student_service.IStudentService;
 import ManageCodeGym.service.student_service.StudentService;
+import ManageCodeGym.util.EmailValidate;
 import ManageCodeGym.util.FileHandler;
 
 import java.io.File;
@@ -16,6 +17,7 @@ public class StudentController {
     private IStudentService studentService = new StudentService();
     private final String FILE_PATH = "students.csv";
     StudentFileHandler studentFileHandler = new StudentFileHandler();
+    Scanner scanner = new Scanner(System.in);
 
     public void displayAllStudents() {
         ArrayList<Student> students = studentService.findAll();
@@ -35,7 +37,6 @@ public class StudentController {
 
     public void displayStudentFunc() {
         int choice = -1;
-        Scanner sc = new Scanner(System.in);
         do {
             System.out.println("Quản lý codegym: \n" +
                     "1. Hiển thị danh sách \n" +
@@ -46,7 +47,7 @@ public class StudentController {
                     "6. Sắp xếp danh sách \n" +
                     "7. Trở về trang chủ");
 
-            choice = Integer.parseInt(sc.nextLine());
+            choice = Integer.parseInt(scanner.nextLine());
 
             switch (choice) {
                 case 1:
@@ -75,7 +76,7 @@ public class StudentController {
                             "2. Sắp xếp theo ID \n" +
                             "3. Trở về");
 
-                    int choice2 = Integer.parseInt(sc.nextLine());
+                    int choice2 = Integer.parseInt(scanner.nextLine());
                     switch (choice2) {
                         case 1:
                             sortByName();
@@ -122,7 +123,6 @@ public class StudentController {
 
     public void updateStudent() {
         ArrayList<Student> students = studentService.findAll();
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter ID you want to update: ");
         int id = Integer.parseInt(scanner.nextLine());
         int index = -1;
@@ -146,7 +146,6 @@ public class StudentController {
 
     public void removeStudent() {
         ArrayList<Student> students = studentService.findAll();
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter ID of Student: ");
         int id = Integer.parseInt(scanner.nextLine());
         boolean checkId = false;
@@ -165,7 +164,6 @@ public class StudentController {
 
     public void addStudent() {
         ArrayList<Student> students = studentService.findAll();
-        Scanner scanner = new Scanner(System.in);
         boolean isExist;
         int id;
 
@@ -188,24 +186,32 @@ public class StudentController {
 
     public Student scanInputOfStudent(int id) {
         LocalDate birthDate = null;
-        boolean checkFormat;
-        Scanner scanner = new Scanner(System.in);
+        boolean checkFormat = false;
+        boolean checkEmail = false;
+        String email = null;
         System.out.println("Enter student name: ");
         String name = scanner.nextLine();
+
         do {
             try {
-                checkFormat = false;
                 System.out.println("Enter student birth date (format YYYY-MM-DD): ");
                 String temp = scanner.nextLine();
                 birthDate = LocalDate.parse(temp);
-            } catch (DateTimeException err) {
                 checkFormat = true;
+            } catch (DateTimeException err) {
                 System.out.println("Wrong format");
             }
-        } while (checkFormat);
+        } while (!checkFormat);
 
-        System.out.println("Enter student email: ");
-        String email = scanner.nextLine();
+        do {
+            System.out.println("Enter student email: ");
+            email = scanner.nextLine();
+            checkEmail = EmailValidate.validate(email);
+            if (!checkEmail) {
+                System.out.println("Invalid email format");
+            }
+        } while (!checkEmail);
+
         System.out.println("Enter student phone number: ");
         String phoneNumber = scanner.nextLine();
         System.out.println("Enter student class name: ");
