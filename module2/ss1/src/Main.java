@@ -25,5 +25,15 @@ public class Main {
         Date now = new Date();
 
         System.out.println("Today is " + now);
+
+        String str = "abc";
+        String str1 = "abc";
+
+        str.concat(str1);
+
+        String x = "abc";
+        String y = "abc";
+        x.concat(y);
+        System.out.print(x);
     }
 }

@@ -1,6 +1,7 @@
 package ManageCodeGym.repository.teacher_repo;
 
 import ManageCodeGym.model.Teacher;
+import ManageCodeGym.util.FileHandler;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class TeacherRepository implements ITeacherRepository{
     private static List<Teacher> teachers = new ArrayList<>();
+    private static Teacher teacherInstance = new Teacher();
 
     static {
 //        Teacher teacher1 = new Teacher(34,"Quynh Nhu", LocalDate.parse("1999-06-01"), "hoanglinhphan16@gmail.com", "0905089207", "Master");
@@ -33,7 +35,7 @@ public class TeacherRepository implements ITeacherRepository{
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        teachers = TeacherFileHandler.readTeachersFromFile();
+        teachers = FileHandler.readFromFile(teacherInstance, "teachers.csv");
     }
 
     @Override

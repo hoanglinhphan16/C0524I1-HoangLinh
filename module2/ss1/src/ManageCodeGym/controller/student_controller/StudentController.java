@@ -1,14 +1,11 @@
 package ManageCodeGym.controller.student_controller;
 
 import ManageCodeGym.model.Student;
-import ManageCodeGym.repository.student_repo.StudentFileHandler;
 import ManageCodeGym.service.student_service.IStudentService;
 import ManageCodeGym.service.student_service.StudentService;
-import ManageCodeGym.util.EmailValidate;
+import ManageCodeGym.util.Validate;
 import ManageCodeGym.util.FileHandler;
 
-import java.io.File;
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,7 +13,7 @@ import java.util.Scanner;
 public class StudentController {
     private IStudentService studentService = new StudentService();
     private final String FILE_PATH = "students.csv";
-    StudentFileHandler studentFileHandler = new StudentFileHandler();
+    Student studentInstance = new Student();
     Scanner scanner = new Scanner(System.in);
 
     public void displayAllStudents() {
@@ -123,25 +120,28 @@ public class StudentController {
 
     public void updateStudent() {
         ArrayList<Student> students = studentService.findAll();
-        System.out.println("Enter ID you want to update: ");
-        int id = Integer.parseInt(scanner.nextLine());
         int index = -1;
+        int id = -1;
         boolean check = false;
-
-        for (Student student : students) {
-            if (student.getId() == id) {
-                check = true;
-                index = students.indexOf(student);
-                break;
+        do {
+            id = Integer.parseInt(Validate.validateId(scanner));
+            check = false;
+            for (Student student : students) {
+                if (student.getId() == id) {
+                    check = true;
+                    index = students.indexOf(student);
+                    System.out.println(student);
+                    break;
+                }
             }
-        }
+        } while (!check);
+
         if (check) {
             Student student = scanInputOfStudent(id);
             studentService.update(index, student);
-            FileHandler.readFromFile(student, FILE_PATH);
+            FileHandler.readFromFile(studentInstance, FILE_PATH);
             FileHandler.writeListToFile(students, FILE_PATH, false);
         } else System.out.println("Wrong ID");
-
     }
 
     public void removeStudent() {
@@ -158,6 +158,7 @@ public class StudentController {
         }
         if (checkId) {
             System.out.println("Delete success!");
+            FileHandler.readFromFile(studentInstance, FILE_PATH);
             FileHandler.writeListToFile(students, FILE_PATH, false);
         } else System.out.println("Wrong ID");
     }
@@ -168,8 +169,7 @@ public class StudentController {
         int id;
 
         do {
-            System.out.println("Enter student ID: ");
-            id = Integer.parseInt(scanner.nextLine());
+            id = Integer.parseInt(Validate.validateId(scanner));
             isExist = false;
             for (Student student : students) {
                 if (student.getId() == id) {
@@ -185,37 +185,15 @@ public class StudentController {
     }
 
     public Student scanInputOfStudent(int id) {
-        LocalDate birthDate = null;
-        boolean checkFormat = false;
-        boolean checkEmail = false;
-        String email = null;
-        System.out.println("Enter student name: ");
-        String name = scanner.nextLine();
+        String name = Validate.validateName(scanner);
 
-        do {
-            try {
-                System.out.println("Enter student birth date (format YYYY-MM-DD): ");
-                String temp = scanner.nextLine();
-                birthDate = LocalDate.parse(temp);
-                checkFormat = true;
-            } catch (DateTimeException err) {
-                System.out.println("Wrong format");
-            }
-        } while (!checkFormat);
+        LocalDate birthDate = Validate.validateDateOfBirth(scanner);
 
-        do {
-            System.out.println("Enter student email: ");
-            email = scanner.nextLine();
-            checkEmail = EmailValidate.validate(email);
-            if (!checkEmail) {
-                System.out.println("Invalid email format");
-            }
-        } while (!checkEmail);
+        String email = Validate.validateEmail(scanner);
 
-        System.out.println("Enter student phone number: ");
-        String phoneNumber = scanner.nextLine();
-        System.out.println("Enter student class name: ");
-        String className = scanner.nextLine();
+        String phoneNumber = Validate.validatePhoneNumber(scanner);
+
+        String className = Validate.validateClassName(scanner);
 
         return new Student(id, name, birthDate, email, phoneNumber, className);
     }

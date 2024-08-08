@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentRepository implements IStudentRepository {
-    private static List students;
+    private static List<Student> students;
     private static Student studentInstance = new Student();
 
     static {

@@ -6,6 +6,7 @@ import ManageCodeGym.repository.teacher_repo.TeacherFileHandler;
 import ManageCodeGym.service.teach_service.ITeacherService;
 import ManageCodeGym.service.teach_service.TeacherService;
 import ManageCodeGym.util.FileHandler;
+import ManageCodeGym.util.Validate;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -16,6 +17,7 @@ public class TeacherController {
     private final ITeacherService teacherService = new TeacherService();
     private final String FILE_PATH = "teachers.csv";
     private Teacher teacherInstance = new Teacher();
+    Scanner scanner = new Scanner(System.in);
 
     public void displayAllTeachers() {
         ArrayList<Teacher> teachers = teacherService.findAll();
@@ -111,13 +113,11 @@ public class TeacherController {
 
     public void addTeacher() {
         ArrayList<Teacher> teachers = teacherService.findAll();
-        Scanner scanner = new Scanner(System.in);
         boolean isExist;
         int id;
 
         do {
-            System.out.println("Enter teacher ID: ");
-            id = Integer.parseInt(scanner.nextLine());
+            id = Integer.parseInt(Validate.validateId(scanner));
             isExist = false;
             for (Teacher teacher : teachers) {
                 if (teacher.getId() == id) {
@@ -130,60 +130,48 @@ public class TeacherController {
 
         Teacher teacher = scanInputOfTeacher(id);
         teacherService.add(teacher);
-//        TeacherFileHandler.writeTeacherToFile(teacher);
         FileHandler.writeToFile(teacher, FILE_PATH, true);
     }
 
     public Teacher scanInputOfTeacher(int id) {
-        boolean checkFormat;
-        LocalDate birthDate = null;
-        Scanner scanner = new Scanner(System.in);
+        String name = Validate.validateName(scanner);
 
-        System.out.println("Enter teacher name: ");
-        String name = scanner.nextLine();
-        do {
-            try {
-                checkFormat = false;
-                System.out.println("Enter teacher birth date (format: YYYY-MM-DD): ");
-                String temp = scanner.nextLine();
-                birthDate = LocalDate.parse(temp);
-            } catch (DateTimeException err) {
-                checkFormat = true;
-                System.out.println("Wrong format");
-            }
-        } while (checkFormat);
+        LocalDate birthDate = Validate.validateDateOfBirth(scanner);
 
-        System.out.println("Enter teacher email: ");
-        String email = scanner.nextLine();
-        System.out.println("Enter teacher phone number: ");
-        String phoneNumber = scanner.nextLine();
-        System.out.println("Enter teacher level: ");
-        String level = scanner.nextLine();
+        String email = Validate.validateEmail(scanner);
+
+        String phoneNumber = Validate.validatePhoneNumber(scanner);
+
+        String level = Validate.validateLevel(scanner);
 
         return new Teacher(id, name, birthDate, email, phoneNumber, level);
     }
 
     public void updateTeacher() {
         ArrayList<Teacher> teachers = teacherService.findAll();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter ID you want to update: ");
-        int id = Integer.parseInt(scanner.nextLine());
-        int index = 0;
+        int index = -1;
+        int id = -1;
         boolean check = false;
 
-        for (Teacher teacher : teachers) {
-            if (teacher.getId() == id) {
-                check = true;
-                index = teachers.indexOf(teacher);
+        do {
+            id = Integer.parseInt(Validate.validateId(scanner));
+            check = false;
+            for (Teacher teacher : teachers) {
+                if (teacher.getId() == id) {
+                    check = true;
+                    index = teachers.indexOf(teacher);
+                    System.out.println(teacher);
+                    break;
+                }
             }
-        }
+        } while (!check);
+
         if (check) {
             Teacher teacher = scanInputOfTeacher(id);
             teacherService.update(index, teacher);
             FileHandler.readFromFile(teacher, FILE_PATH);
             FileHandler.writeListToFile(teachers, FILE_PATH, false);
         } else System.out.println("Wrong ID");
-//        TeacherFileHandler.writeTeachersToFile(teachers);
     }
 
     public void deleteTeacher() {
@@ -203,7 +191,6 @@ public class TeacherController {
         if (checkId) {
             FileHandler.readFromFile(teacherInstance, FILE_PATH);
             FileHandler.writeListToFile(teachers, FILE_PATH, false);
-//            TeacherFileHandler.writeTeachersToFile(teachers);
             System.out.println("Delete success!");
         } else {
             System.out.println("Wrong Id");
