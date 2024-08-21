@@ -1,0 +1,12 @@
+#external {
+    color: red;
+}
+
+.text {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    text-indent: 30px;
+    color: #DDDDDD;
+    text-decoration: underline;
+}
