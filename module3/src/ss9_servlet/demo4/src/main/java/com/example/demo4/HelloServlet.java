@@ -43,15 +43,16 @@ public class HelloServlet extends HttpServlet {
         dictionary.put("world","the gioi");
         dictionary.put("computer", "may tinh");
 
-        PrintWriter writer = respone.getWriter();
-
         String search = request.getParameter("txtSearch");
         String result = dictionary.get(search);
 
         if (result != null) {
-            writer.println(search + " có nghĩa là " + result);
+            request.setAttribute("result", result);
+
         } else {
-            writer.println("Can't find " + search);
+            result = "Cant find";
+            request.setAttribute("result", result);
         }
+        request.getRequestDispatcher("dictionary.jsp").forward(request, response);
     }
 }
