@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mục lục</title>
     <style>
+        /* element selector */
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
         }
 
+        /* class selector */
         .toc {
             margin: 20px 0;
         }
@@ -27,11 +29,64 @@
         .section {
             margin-top: 50px;
         }
+
+        /* id selector */
+        #section1 {
+            background-color: antiquewhite;
+        }
+
+        /* attribute selector + pseudo-class selector */
+        img[src]:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        img {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* pseudo-element selector */
+        ul::before {
+            content: "This is before";
+            background-color: red;
+            color: #ffffff;
+        }
+
+        ul::after {
+            content: "This is after";
+            background-color: red;
+            color: #ffffff;
+        }
+
+        .container {
+            display: flex !important;
+            flex-wrap: wrap;
+            /* Cho phép các phần tử con được bao xuống hàng tiếp theo */
+        }
+
+        .item1,
+        .item2 {
+            flex: 1 1;
+            /* Cả hai phần tử sẽ chiếm 50% chiều rộng của container */
+        }
+
+        .item3 {
+            flex: 1;
+            /* Phần tử này sẽ chiếm toàn bộ chiều rộng của container */
+        }
     </style>
 </head>
 
 <body>
-    <img style="width: 500px; margin-left: auto; margin-right: auto; display: block;"
+    <div class="container">
+        <div class="item1">Phần tử 1</div>
+        <div class="item2">Phần tử 2</div>
+        <div class="item3">Phần tử 3</div>
+    </div>
+
+    <img style="width: 500px; margin: auto; display: block;"
         src="https://w0.peakpx.com/wallpaper/199/958/HD-wallpaper-tsunade-senju-pretty-female-lovely-rude-blonde-hair-beautiful-woman-sweet-girl-anime-beauty-anime-girl-lady-long-hair-ninja.jpg"
         alt="">
     <h1>Mục lục</h1>
@@ -104,6 +159,8 @@
             Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
             Aldus PageMaker including versions of Lorem Ipsum</p>
     </div>
+
+
 
 </body>
 
