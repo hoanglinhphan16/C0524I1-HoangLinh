@@ -1,0 +1,35 @@
+/* Error color */
+.popup.error {
+    background-color: #e74c3c;
+}
+
+/* Message text */
+.popup-message {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+/* Close button */
+#close-popup {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Animation for smooth fade-in */
+.popup {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
