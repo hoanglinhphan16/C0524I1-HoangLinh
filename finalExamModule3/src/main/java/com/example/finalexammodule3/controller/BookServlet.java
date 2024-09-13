@@ -106,17 +106,18 @@ public class BookServlet extends HttpServlet {
         String rentDateStr = request.getParameter("rentDate");
         String returnDateStr = request.getParameter("returnDate");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        java.sql.Date rentDate = null;
-        java.sql.Date returnDate = null;
+        java.util.Date rentDate = null;
+        java.util.Date returnDate = null;
         try {
-            rentDate = (java.sql.Date) dateFormat.parse(rentDateStr);
-            returnDate = (java.sql.Date) dateFormat.parse(returnDateStr);
+            rentDate = dateFormat.parse(rentDateStr);
+            returnDate = dateFormat.parse(returnDateStr);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-        RentCard rentCard = new RentCard("đang mượn", rentDate, returnDate, studentId, bookId);
-        System.out.println(rentCard);
-        rentCardService.rentCard(rentCard);
+        if (rentDate!= null & returnDate!= null) {
+            RentCard rentCard = new RentCard("đang mượn", new java.sql.Date(rentDate.getTime()), new java.sql.Date(returnDate.getTime()), studentId, bookId);
+            rentCardService.rentCard(rentCard);
+            response.sendRedirect("/BookServlet?action=listBooks");
+        }
     }
 }
