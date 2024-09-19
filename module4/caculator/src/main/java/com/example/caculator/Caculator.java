@@ -17,8 +17,8 @@ public class Caculator {
 
     @PostMapping("/result")
     public String result(@RequestParam("selectedItem") String selectedItem
-            , @RequestParam("value1") int value1
-            , @RequestParam("value2") int value2, Model model) {
+            , @RequestParam("value1") float value1
+            , @RequestParam("value2") float value2, Model model) {
         String[] list = {"Addition", "Subtraction", "Multiplication", "Division"};
         model.addAttribute("list", list);
         if (selectedItem.equals("Addition")) {
