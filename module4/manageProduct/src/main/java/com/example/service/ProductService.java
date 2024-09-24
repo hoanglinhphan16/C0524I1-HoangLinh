@@ -1,51 +1,34 @@
 package com.example.service;
 
 import com.example.model.Product;
+import com.example.repository.IProductRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ProductService implements IProductService {
-    static List<Product> products = new ArrayList<Product>();
-
-    static {
-        products.add(new Product(1, "Computer", 1500.0));
-        products.add(new Product(2, "Laptop", 2500.0));
-        products.add(new Product(3, "Desk", 500.0));
-        products.add(new Product(4, "Phone", 3500.0));
-        System.out.println(products);
-    }
+    @Autowired
+    private IProductRepo productRepo;
 
     @Override
     public List<Product> findAll() {
-        return products;
+        return productRepo.findAll();
     }
 
     @Override
     public void save(Product product) {
-        products.add(product);
+        productRepo.save(product);
     }
 
     @Override
     public Product findById(int id) {
-        for (Product product : products) {
-            if (product.getId() == id) {
-                return product;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public void update(int id, Product product) {
-        product.setId(id);
-        save(product);
+        return productRepo.findById(id);
     }
 
     @Override
     public void remove(int id) {
-        products.remove(findById(id));
+        productRepo.remove(id);
     }
 }

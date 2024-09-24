@@ -14,6 +14,7 @@
 <table id = "products">
     <thead>
     <tr>
+        <th>STT</th>
         <th>Name</th>
         <th>Price</th>
         <th>Edit</th>
@@ -23,6 +24,7 @@
     </thead>
     <tbody>
     <tr th:each="row,rowStat : ${products}">
+        <td th:text="${rowStat.count}"></td>
         <td th:text="${row.getName()}"></td>
         <td th:text="${row.getPrice()}"></td>
         <td><a th:href="@{/products/{id}/edit(id=${row.getId()})}">edit</a></td>
