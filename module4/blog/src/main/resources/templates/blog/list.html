@@ -15,13 +15,20 @@
         <span th:text="${message}"></span>
     </div>
 </div>
-
+<div>
+    <form th:action="@{/blogs/search}" method="get">
+        <label><input type="text" name="search"></label>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
 <table id = "blogs">
     <thead>
     <tr>
         <th>STT</th>
         <th>Title</th>
         <th>Content</th>
+        <th>Category</th>
+        <th>Detail</th>
         <th>Update</th>
         <th>Delete</th>
     </tr>
@@ -31,11 +38,16 @@
         <td th:text="${bStatus.count}"></td>
         <td th:text="${b.getTitle()}"></td>
         <td th:text="${b.getContent()}"></td>
+        <td th:text="${b.getCategory().getName()}"></td>
+        <td><a th:href="@{/blogs/detail/__${b.getId()}__}">detail</a></td>
         <td><a th:href="@{/blogs/update/{id}(id=${b.getId()})}">update</a></td>
         <td><a th:href="@{/blogs/delete/{id}(id=${b.getId()})}">delete</a></td>
     </tr>
     </tbody>
 </table>
+<a th:if="${blogs.hasPrevious()}" th:href="@{/blogs(page=${blogs.number -1})}">Previous</a>
+<span th:text="${blogs.number +1}"></span>/<span th:text="${blogs.totalPages}"></span>
+<a th:if="${blogs.hasNext()}" th:href="@{/blogs(page=${blogs.number +1})}">Next</a>
 <footer th:replace="/layout :: footer"></footer>
 </body>
 </html>

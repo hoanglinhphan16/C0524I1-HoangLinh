@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>List Customer</title>
+</head>
+<body>
+<h3>Blogs</h3>
+<p>
+    <a th:href="@{/categories/create}">
+        Add new category
+    </a>
+</p>
+<div class="notify">
+    <div th:if="${message}">
+        <span th:text="${message}"></span>
+    </div>
+</div>
+<div>
+    <form th:action="@{/categories/search}" method="get">
+        <label><input type="text" name="search"></label>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+<table id = "categories">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c,cStatus : ${categories.getContent()}">
+        <td th:text="${cStatus.count}"></td>
+        <td th:text="${c.getName()}"></td>
+        <td><a th:href="@{/categories/update/{id}(id=${c.getId()})}">update</a></td>
+        <td><a th:href="@{/categories/delete/{id}(id=${c.getId()})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<a th:if="${categories.hasPrevious()}" th:href="@{/categories(page=${categories.number -1},search=${search})}">Previous</a>
+<span th:text="${categories.number +1}"></span>/<span th:text="${categories.totalPages}"></span>
+<a th:if="${categories.hasNext()}" th:href="@{/categories(page=${categories.number +1},search=${search})}">Next</a>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

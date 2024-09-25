@@ -5,12 +5,16 @@ import com.example.demo1_spring_boot.model.Province;
 import com.example.demo1_spring_boot.service.ICustomerService;
 import com.example.demo1_spring_boot.service.IProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/customers")
@@ -26,10 +30,24 @@ public class CustomerController {
     @Autowired
     private IProvinceService provinceService;
 
-    @GetMapping
-    public ModelAndView listCustomer() {
+    @GetMapping("")
+    public ModelAndView listCustomer(@PageableDefault(size = 2) Pageable pageable) {
+        System.out.println(pageable);
+        Page<Customer> customers = customerService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("/customer/list");
-        Iterable<Customer> customers = customerService.findAll();
+        modelAndView.addObject("customers", customers);
+        return modelAndView;
+    }
+
+    @GetMapping("/search")
+    public ModelAndView listCustomersSearch(@RequestParam("search") Optional<String> search, Pageable pageable) {
+        Page<Customer> customers;
+        if(search.isPresent()){
+            customers = customerService.findAllByName(pageable, search.get());
+        } else {
+            customers = customerService.findAll(pageable);
+        }
+        ModelAndView modelAndView = new ModelAndView("/customer/list");
         modelAndView.addObject("customers", customers);
         return modelAndView;
     }
