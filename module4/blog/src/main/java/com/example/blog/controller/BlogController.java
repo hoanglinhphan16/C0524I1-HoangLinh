@@ -79,7 +79,6 @@ public class BlogController {
     @PostMapping("/update/{id}")
     public String update(@ModelAttribute("blog") Blog blog,
                          RedirectAttributes redirect) {
-        System.out.println(blog.getCategory().getId());
         blogService.save(blog);
         redirect.addFlashAttribute("message", "Update blog successfully");
         return "redirect:/blogs";
