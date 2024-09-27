@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Sách</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Thông Tin Sách</h1>
+    <div class="card">
+        <div class="card-body">
+            <form th:action="@{/books/borrow/__${book.getId()}__}" method="post" th:object="${book}">
+                <h3 class="card-title" th:text="${book.getName()}"></h3>
+                <input hidden="" class="card-title" th:field="*{name}">
+                <button class="btn btn-primary" type="submit">Mượn sách</button>
+            </form>
+        </div>
+    </div>
+    <a href="/books" class="btn btn-primary mt-5">Quay lại danh sách sách</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
