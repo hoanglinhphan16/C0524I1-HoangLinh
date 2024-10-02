@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Th you click on the "Hide" button, i will disappear</p>
+    <button class="hide">Hide</button>
+    <button class="show">Show</button>
+
+    <button class="startAnimation">Start Animation</button>
+    <p class="text">By default, all HTML elements have a static position, and cannot be moved. <br> To manipulate the
+        position,
+        remember to
+        first set the CSS position property <br> of the element to relative, fixed, or absolute!</p>
+    <div style="background:#98bf21;height:100px;width:200px;position:absolute;">HELLO</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $(".hide").click(() => {
+                $("p").hide()
+            })
+
+            $(".show").click(() => {
+                $("p").show()
+            })
+
+            $(".startAnimation").click(() => {
+                let div = $("div")
+                div.animate({ left: "100px" }, "slow")
+                div.animate({ fontSize: "50px" }, "slow")
+            })
+        })
+    </script>
+</body>
+
+</html>

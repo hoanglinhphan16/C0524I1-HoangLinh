@@ -10,15 +10,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/blogs")
 public class BlogController {
     @Autowired
@@ -33,7 +30,7 @@ public class BlogController {
     }
 
     @GetMapping()
-    public ResponseEntity<Page<Blog>> listBlog(@PageableDefault(size = 6) Pageable pageable) {
+    public ResponseEntity<Page<Blog>> listBlog(@PageableDefault(size = 1) Pageable pageable) {
         Page<Blog> blogs = blogService.findAll(pageable);
         if (blogs.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -53,7 +50,7 @@ public class BlogController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Blog> getBlog(@PathVariable long id) {
+    public ResponseEntity<Blog> getBlog(@PathVariable Long id) {
         Blog tempBlog = blogService.findById(id);
         if (tempBlog == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -105,7 +102,7 @@ public class BlogController {
 //        return "redirect:/blogs";
 //    }
 
-    @DeleteMapping("/detail/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Blog> deleteBlog(@PathVariable Long id) {
         Blog blog = blogService.findById(id);
         if (blog == null) {
