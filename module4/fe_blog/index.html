@@ -23,9 +23,9 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Content</th>
                 </tr>
             </thead>
             <tbody id="content">
@@ -48,7 +48,7 @@
                 },
                 type: "GET",
                 //tên API
-                url: `http://localhost:8081/api/blogs/search?search=${search}`,
+                url: `http://localhost:8081/api/blogs?search=${search}`,
                 //xử lý khi thành công
                 success: (data) => {
                     let content = "";
