@@ -65,14 +65,12 @@
             });
         }
 
-        // Gọi khi trang được load lần đầu với ngôn ngữ mặc định (tiếng Anh)
         $(document).ready(function () {
             loadMessages('vi');
 
-            // Khi người dùng chọn ngôn ngữ khác
             $('#lang-select').change(function () {
                 var selectedLang = $(this).val();
-                loadMessages(selectedLang);  // Gọi lại API với ngôn ngữ mới
+                loadMessages(selectedLang);
             });
         });
     </script>
