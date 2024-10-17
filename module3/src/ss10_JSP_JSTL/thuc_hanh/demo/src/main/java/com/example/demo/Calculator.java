@@ -1,4 +1,4 @@
-package com.example.demo;
+package ss10_JSP_JSTL.thuc_hanh.demo.src.main.java.com.example.demo;
 
 public class Calculator {
     public static float calculate(float firstOperand, float secondOperand, char operator ){

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Authentication</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>JWT Authentication</h1>
+<h2>Login</h2>
+<form id="loginForm">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+</form>
+
+<h2>Register</h2>
+<form id="registerForm">
+    <input type="text" id="regUsername" placeholder="Username" required>
+    <input type="password" id="regPassword" placeholder="Password" required>
+    <button type="submit">Register</button>
+</form>
+
+<script>
+    $(document).ready(function () {
+        // Login
+        $('#loginForm').on('submit', function (e) {
+            e.preventDefault();
+            const username = $('#username').val();
+            const password = $('#password').val();
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8080/auth/login',
+                contentType: 'application/json',
+                data: JSON.stringify({ username, password }),
+                success: function (data) {
+                    alert('Login successful! Token: ' + data.token);
+                },
+                error: function () {
+                    alert('Login failed!');
+                }
+            });
+        });
+
+        // Register
+        $('#registerForm').on('submit', function (e) {
+            e.preventDefault();
+            const username = $('#regUsername').val();
+            const password = $('#regPassword').val();
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8080/auth/register',
+                contentType: 'application/json',
+                data: JSON.stringify({ username, password, roles: ['USER'] }),
+                success: function () {
+                    alert('Registration successful!');
+                },
+                error: function () {
+                    alert('Registration failed!');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

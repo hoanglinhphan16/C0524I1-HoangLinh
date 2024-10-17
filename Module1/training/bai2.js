@@ -27,7 +27,8 @@ const result = checkStr("The Quick Brown Fox");
 if (result.countLow == result.countUp) {
     console.log(true);
 } else console.log(false);
-let a = 5
-if (a++ > 5) {
-    console.log(true);
-}
+let num = 0;
+do {
+    num++;
+    console.log(num);
+} while (num++ < 10)

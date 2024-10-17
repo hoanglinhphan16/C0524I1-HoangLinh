@@ -12,10 +12,20 @@ public class Management {
         Scanner sc = new Scanner(System.in);
         int choice = -1;
 
+        System.out.println("w   w  eeee  l     cccc  oooo  m   m  eeee      dddd   aaaa  dddd  dddd  y   y\n" +
+                "w   w  e     l    c     o    o m m m  e         d   d  a  a  d   d d   d  y y \n" +
+                "w w w  eeee  l    c     o    o m m m  eeee      d   d  aaaa  d   d d   d   y\n" +
+                "w w w  e     l    c     o    o m m m  e         d   d  a  a  d   d d   d   y\n" +
+                " w w   eeee  llll  cccc  oooo  m m m  eeee      dddd   a  a  dddd  dddd    y\n");
+
+        System.out.println("♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥");
+        System.out.println();
+
         do {
             System.out.println("1. Customer management\n" +
                     "2. Employee management\n" +
-                    "3. Booking management\n");
+                    "3. Booking management\n" +
+                    "4. Exit");
             try {
                 choice = Integer.parseInt(sc.nextLine());
                 switch (choice) {

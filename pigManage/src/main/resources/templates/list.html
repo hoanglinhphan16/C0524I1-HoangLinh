@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý heo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .header, th {
+            background-color: yellow;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Quản lý heo</h2>
+
+    <!-- Thanh tìm kiếm -->
+    <form action="/pigs/search" method="get" class="row mb-3">
+        <div class="col-md-3">
+            <select name="status" class="form-control">
+                <option value="" disabled selected>Tình trạng heo</option>
+                <option value="Chưa bán">Chưa bán</option>
+                <option value="Đã bán">Đã bán</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <input type="text" name="pigId" class="form-control" placeholder="Tìm kiếm theo Mã heo">
+        </div>
+
+        <div class="mb-3">
+            <select id="origin" name="originId" class="form-control">
+                <option value="" disabled selected>Quốc gia</option>
+                <option th:each="origin : ${origins}"
+                        th:value="${origin.id}"
+                        th:text="${origin.name}"></option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        </div>
+    </form>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Mã số heo</th>
+            <th>Ngày nhập chuồng</th>
+            <th>Trọng lượng khi nhập chuồng</th>
+            <th>Thời gian xuất chuồng</th>
+            <th>Trọng lượng khi xuất chuồng</th>
+            <th>Xuất xứ</th>
+            <th>Xuất chuồng</th>
+            <th>Detail</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pig, stat : ${pigs}">
+            <td th:text="${stat.index + 1}"></td>
+            <td th:text="${pig.getId()}"></td>
+            <td th:text="${pig.getStartDate()}"></td>
+            <td th:text="${pig.getWeightIn() + ' kg'}"></td>
+            <td th:text="${pig.getEndDate() != null ? pig.getEndDate() : 'Chưa đến ngày xuất'}"></td>
+            <td th:text="${pig.getWeightOut() + ' kg'}"></td>
+            <td th:text="${pig.origin.name}"></td>
+            <td th:text="${pig.getWeightIn() != pig.getWeightOut() ? 'Đã bán' : 'Chưa bán'}"></td>
+            <td>
+                <a class="btn btn-info" th:href="@{'/pigs/edit/' + ${pig.getId()}}">Xem</a>
+            </td>
+            <td>
+                <button class="btn btn-danger" th:onclick="'confirmDelete(' + ${pig.id} + ')'">xóa</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal xác nhận xóa -->
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hộp thoại xác nhận xóa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="deleteMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmDelete(pigCode) {
+        document.getElementById('deleteMessage').textContent = `Bạn có muốn xóa heo có mã số ${pigCode}?`;
+        $('#deleteModal').modal('show');
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

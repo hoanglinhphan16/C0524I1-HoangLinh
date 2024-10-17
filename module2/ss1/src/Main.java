@@ -29,6 +29,10 @@ public class Main {
         String str = "abc";
         String str1 = "abc";
 
+        if (str == str1) {
+            System.out.println("str == str1");
+        }
+
         str.concat(str1);
 
         String x = "abc";

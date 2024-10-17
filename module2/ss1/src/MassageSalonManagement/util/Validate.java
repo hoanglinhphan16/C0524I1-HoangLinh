@@ -12,8 +12,6 @@ public class Validate {
     private static final String WORD_REGEX = "^[a-zA-Z ]{4,30}$";
     private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
     private static final String PHONENUMBER_REGEX = "^(\\+84|090|093)\\d{7}$";
-    private static final String CLASSNAME_REGEX = "^C\\d{4}([GILHK])\\d$";
-    private static final String LEVEL_REGEX = "^[a-zA-Z]{4,}$";
     private static final String IDENTIFICATION_CARD_REGEX = "^\\d{12}$";
     private static final String SALARY_REGEX = "^\\d{3}$";
 
