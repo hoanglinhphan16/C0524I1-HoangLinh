@@ -23,7 +23,8 @@ class App extends Component {
       }), () => {
         console.log('Updated list:', this.state.list);
       });
-    }
+    } else console.log("Existed!!!");
+
   }
 
   render() {
