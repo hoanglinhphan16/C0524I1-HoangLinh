@@ -38,7 +38,8 @@ const ContactForm = () => {
                     <Field type="textarea" name="message" />
                     <button type="submit">Submit</button>
                 </Form>
-            </Formik></>
+            </Formik>
+        </>
     )
 }
 
