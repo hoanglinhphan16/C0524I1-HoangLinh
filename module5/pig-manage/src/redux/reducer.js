@@ -1,8 +1,9 @@
-import { FETCH_PIG_SUCCESS, FETCH_ORIGIN_SUCCESS } from "./action";
+import { FETCH_PIG_SUCCESS, FETCH_ORIGIN_SUCCESS, TOTAL_PAGES, SEARCH_PIG } from "./action";
 
 const initialState = {
     pigs: [],
-    origins: []
+    origins: [],
+    totalPages: 0,
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -10,7 +11,11 @@ const rootReducer = (state = initialState, action) => {
         case FETCH_PIG_SUCCESS:
             return { ...state, pigs: action.payload };
         case FETCH_ORIGIN_SUCCESS:
-            return { ...state, origins: action.payload }
+            return { ...state, origins: action.payload };
+        case TOTAL_PAGES:
+            return { ...state, totalPages: action.payload }
+        case SEARCH_PIG:
+            return { ...state, pigs: action.payload };
     }
 
     return state;

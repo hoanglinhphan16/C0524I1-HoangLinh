@@ -1,40 +1,134 @@
 {
-    "origins": [
-        {
-            "id": 1,
-            "country": "Vietnam"
-        },
-        {
-            "id": 2,
-            "country": "United States"
-        }
-    ],
-    "pigs": [
-        {
-            "id": 1,
-            "code": "1",
-            "dateIn": "2020-01-01",
-            "weightIn": "20.0 kg",
-            "dateOut": "2020-05-05",
-            "weightOut": "100.0 kg",
-            "origin": {
-                "id": 1,
-                "country": "Vietnam"
-            },
-            "status": "Đã bán"
-        },
-        {
-            "id": 2,
-            "code": "2",
-            "dateIn": "2020-02-02",
-            "weightIn": "10.0 kg",
-            "dateOut": "2020-04-04",
-            "weightOut": "10.0 kg",
-            "origin": {
-                "id": 2,
-                "country": "United States"
-            },
-            "status": "Chưa bán"
-        }
-    ]
+  "origins": [
+    {
+      "id": "1",
+      "country": "Vietnam"
+    },
+    {
+      "id": "2",
+      "country": "United States"
+    }
+  ],
+  "pigs": [
+    {
+      "id": "1",
+      "dateIn": "2020-01-01",
+      "weightIn": 20,
+      "dateOut": "2020-05-05",
+      "weightOut": 100,
+      "origin": {
+        "id": "1",
+        "country": "Vietnam"
+      },
+      "status": "Đã bán"
+    },
+    {
+      "id": "2",
+      "dateIn": "2020-02-02",
+      "weightIn": 10,
+      "dateOut": "2020-04-04",
+      "weightOut": 10,
+      "origin": {
+        "id": 2,
+        "country": "United States"
+      },
+      "status": "Chưa bán"
+    },
+    {
+      "id": "123",
+      "dateIn": "2024-10-16",
+      "weightIn": 11,
+      "dateOut": "2024-11-08",
+      "weightOut": 123,
+      "origin": {
+        "id": "1",
+        "country": "Vietnam"
+      },
+      "status": "Đã bán"
+    },
+    {
+      "id": "22",
+      "dateIn": "2024-10-01",
+      "weightIn": 22,
+      "dateOut": "2024-11-01",
+      "weightOut": 222,
+      "origin": {
+        "id": "1",
+        "country": "Vietnam"
+      },
+      "status": "Đã bán"
+    },
+    {
+      "id": "123123",
+      "dateIn": "2024-10-31",
+      "weightIn": 11,
+      "dateOut": "2025-11-11",
+      "weightOut": "",
+      "origin": {
+        "id": "1",
+        "country": "Vietnam"
+      },
+      "status": "Chưa bán"
+    },
+    {
+      "id": "22222",
+      "dateIn": "2024-10-01",
+      "weightIn": 23,
+      "dateOut": "2024-11-01",
+      "weightOut": 44,
+      "origin": {
+        "id": "1",
+        "country": "Vietnam"
+      },
+      "status": "Đã bán"
+    },
+    {
+      "id": "44",
+      "dateIn": "2024-10-08",
+      "weightIn": 11,
+      "dateOut": "2024-10-16",
+      "weightOut": 22,
+      "origin": {
+        "id": "2",
+        "country": "United States"
+      },
+      "status": "Đã bán"
+    },
+    {
+      "id": "2222",
+      "dateIn": "2024-10-08",
+      "weightIn": 11,
+      "dateOut": "2024-11-02",
+      "weightOut": 22,
+      "origin": {
+        "id": "2",
+        "country": "United States"
+      },
+      "status": "Đã bán"
+    },
+    {
+      "id": "5555",
+      "dateIn": "2024-10-31",
+      "weightIn": 22,
+      "dateOut": "2024-11-02",
+      "weightOut": 555,
+      "origin": {
+        "id": "1",
+        "country": "Vietnam"
+      },
+      "status": "Đã bán"
+    },
+    {
+      "id": "55555",
+      "dateIn": "2024-10-14",
+      "weightIn": 22,
+      "dateOut": "2024-10-31",
+      "weightOut": 222,
+      "origin": {
+        "id": "1",
+        "country": "Vietnam"
+      },
+      "status": "Đã bán"
+    }
+  ]
 }

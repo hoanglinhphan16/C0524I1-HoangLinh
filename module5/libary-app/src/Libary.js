@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Container, Row, Col } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.css";
-import './App.css';  // File CSS tùy chỉnh
+import './App.css';
 import axios from 'axios';
 import BookDetail from './BookDetail';
 
