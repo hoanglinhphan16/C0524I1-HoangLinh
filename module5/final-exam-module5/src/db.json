@@ -1,0 +1,82 @@
+{
+  "bookType": [
+    {
+      "id": "1",
+      "name": "Vietnam",
+      "description": "Hello world"
+    },
+    {
+      "id": "2",
+      "name": "Hom nay toi co don",
+      "description": "Hello world"
+    }
+  ],
+  "books": [
+    {
+      "id": "BO-0001",
+      "name": "Sach ve tinh yeu",
+      "bookType": {
+        "id": "1",
+        "name": "Vietnam",
+        "description": "Hello world"
+      },
+      "dateIn": "2024-10-31",
+      "quantity": 200
+    },
+    {
+      "id": "BO-0002",
+      "name": "Harry potter",
+      "bookType": {
+        "id": "2",
+        "name": "Hom nay toi co don",
+        "description": "Hello world"
+      },
+      "dateIn": "2024-10-31",
+      "quantity": 100
+    },
+    {
+      "id": "BO-1111",
+      "name": "123",
+      "dateIn": "2024-10-31",
+      "bookType": {
+        "id": "1",
+        "name": "Vietnam",
+        "description": "Hello world"
+      },
+      "quantity": 22
+    },
+    {
+      "id": "BO-3333",
+      "name": "123",
+      "dateIn": "2024-10-31",
+      "bookType": {
+        "id": "1",
+        "name": "Vietnam",
+        "description": "Hello world"
+      },
+      "quantity": 222222
+    },
+    {
+      "id": "BO-2133",
+      "name": "Today is friday",
+      "dateIn": "2024-10-31",
+      "bookType": {
+        "id": "2",
+        "name": "Hom nay toi co don",
+        "description": "Hello world"
+      },
+      "quantity": 22
+    },
+    {
+      "id": "BO-7899",
+      "name": "kakak",
+      "dateIn": "2024-10-29",
+      "bookType": {
+        "id": "2",
+        "name": "Hom nay toi co don",
+        "description": "Hello world"
+      },
+      "quantity": 10
+    }
+  ]
+}

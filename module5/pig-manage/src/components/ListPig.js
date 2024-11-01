@@ -24,15 +24,11 @@ const PigManagement = () => {
 
     useEffect(() => {
         dispatch(fetchOrigin());
-    }, [origins])
+    }, [])
 
     useEffect(() => {
         dispatch(fetchPig(currentPage, limit));
     }, [currentPage]);
-
-    const handleSubmit = (values) => {
-        console.log('Form values:', values);
-    };
 
     const handleAdd = () => {
         navigate("/add");
